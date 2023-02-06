@@ -8,6 +8,6 @@
 * pure builds if possible
 * no(almost) binary seeds, only compiler and dash
 
-[Why](https://github.com/stal-ix/ix/blob/main/docs/CASES.md)
-[Design](https://github.com/stal-ix/ix/blob/main/docs/STALIX.md#stalix)
+[Why](https://github.com/stal-ix/ix/blob/main/docs/CASES.md)<br>
+[Design](https://github.com/stal-ix/ix/blob/main/docs/STALIX.md#stalix)<br>
 [Install instructions](https://github.com/stal-ix/ix/blob/main/docs/INSTALL.md)
