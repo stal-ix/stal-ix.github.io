@@ -25,7 +25,7 @@ Also used:
 **Lists**: ordinary - each item on a new line, use `<br>` (for example, to list links); bulleted - use asterisks `* some text`.
 
 **Links**: URLs will automatically get turned into links, or you can create an inline link by wrapping link text in brackets.<br>
-`https://github.com/pg83/ix or [stal/IX](https://github.com/pg83/ix)` https://github.com/pg83/ix or [stal/IX](https://github.com/pg83/ix)
+`https://github.com/stal-ix/ix or [stal/IX](https://github.com/stal-ix/ix)` https://github.com/stal-ix/ix or [stal/IX](https://github.com/stal-ix/ix)
 
 **Horizontal separation-line** - created by three (or more) hyphens `---`. Use it to highlight special text blocks, for example: *Exercise*. In the document’s body the block is highlighted with two separation-lines, above and below, if the block at the end of the document - with one separation-line above.
 
@@ -49,8 +49,8 @@ To place below the title:
 * Prereq;
 * Document description. 
 
-Document sections are marked with [headings](https://github.com/adouche/ix/blob/main/docs/GUIDE_2.md#headings).<br>
-Special text blocks - with [horizontal rule](https://github.com/adouche/ix/blob/main/docs/GUIDE_2.md#horizontal-rule).
+Document sections are marked with [headings](https://github.com/stal-ix/ix/blob/main/docs/GUIDE.md#headings).<br>
+Special text blocks - with [horizontal rule](https://github.com/stal-ix/ix/blob/main/docs/GUIDE.md#horizontal-rule).
 
 ## Headings
 
@@ -143,10 +143,10 @@ Due to the fact that the documentation is under development and is regularly sup
 URLs will automatically get turned into links, or you can create an inline link by wrapping the link text in brackets `[ ]`, and the URL in parentheses `( )`, without a whitespace.
 
 ```Markdown
-https://github.com/pg83/ix or [IX package manager](https://github.com/pg83/ix)
+https://github.com/stal-ix/ix or [IX package manager](https://github.com/stal-ix/ix)
 ```
 
-https://github.com/pg83/ix or [IX package manager](https://github.com/pg83/ix)
+https://github.com/stal-ix/ix or [IX package manager](https://github.com/stal-ix/ix)
 
 ### Relative links
 
