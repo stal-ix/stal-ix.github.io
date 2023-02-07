@@ -9,6 +9,7 @@
 * no(almost) binary seeds, only compiler and dash
 
 [Why](https://github.com/stal-ix/ix/blob/main/docs/CASES.md)<br>
+[Blog](BLOG.md)<br>
 [Design](https://github.com/stal-ix/ix/blob/main/docs/STALIX.md#stalix)<br>
 [Source Code](https://github.com/stal-ix/ix)<br>
 [Install instructions](https://github.com/stal-ix/ix/blob/main/docs/INSTALL.md)
