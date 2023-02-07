@@ -1,4 +1,4 @@
-[stal/IX](https://github.com/stal-ix/ix/blob/main/docs/STALIX.md) - statically linked linux, based on [IX](https://github.com/stal-ix/ix/blob/main/docs/IX.md) package manager:
+[stal/IX](STALIX.md) - statically linked linux, based on [IX](IX.md) package manager:
 
 * clang
 * full static
