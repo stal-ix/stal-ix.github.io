@@ -8,8 +8,8 @@
 * first class cross-compilation
 * no(almost) binary seeds, only compiler and dash
 
-[Why](https://github.com/stal-ix/ix/blob/main/docs/CASES.md)<br>
+[Why](CASES.md)<br>
 [Blog](BLOG.md)<br>
-[Design](https://github.com/stal-ix/ix/blob/main/docs/STALIX.md#stalix)<br>
+[Design](STALIX.md)<br>
 [Source Code](https://github.com/stal-ix/ix)<br>
-[Install instructions](https://github.com/stal-ix/ix/blob/main/docs/INSTALL.md)
+[Install instructions](INSTALL.md)
