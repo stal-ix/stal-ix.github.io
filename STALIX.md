@@ -23,7 +23,7 @@ https://connortumbleson.com/2022/11/28/open-source-saying-no/
 ## No FHS
 
 https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard<br>
-https://github.com/stal-ix/ix/blob/main/docs/FS.md
+https://github.com/stal-ix/stal-ix.github.io/blob/main/FS.md
 
 Overall, the file system will be familiar to those who know Nix/Guix. Atomic updates, multi-versioning - all here!
 
@@ -45,7 +45,7 @@ Glibc does not fully support static linking. **stal/IX** uses musl for internal 
 
 ## Non-root package management
 
-https://github.com/stal-ix/ix/blob/main/docs/IX.md
+https://github.com/stal-ix/stal-ix.github.io/blob/main/docs/IX.md
 
 All files on the system are IX user-owned, and all package management is done on his behalf.
 
