@@ -100,7 +100,7 @@ Quite often, upstream is not interested in the ideas inherent in **stal/IX**:
 * https://github.com/swaywm/sway/issues/6828 - sway doesn't want to patch for fully supervised process tree
 * https://github.com/skarnet/execline/issues/9 - we can't use the execline utilities in our startup scripts because their static build is too big
 * https://github.com/swaywm/sway/issues/4540 - tty freeze after sway death, and fix that can't enter upstream - https://github.com/stal-ix/ix/blob/main/pkgs/bin/fixtty/main.c
-* https://github.com/stal-ix/dlopen - fake dlopen, for projects that can't live without external plugins
+* https://github.com/pg83/dlopen - fake dlopen, for projects that can't live without external plugins
 * https://github.com/stal-ix/ix/blob/main/pkgs/lib/gtk/4/stock/0.diff - XCURSOR_SIZE support in gtk
 * https://github.com/stal-ix/ix/blob/main/pkgs/lib/glib/ix/1.diff - support for alternative database of mime types in glib
 * https://github.com/stal-ix/ix/blob/main/pkgs/lib/lunasvg/gdk/io.cpp - custom gdk-pixbuf SVG loader, over lunasvg (instead of rsvg)
