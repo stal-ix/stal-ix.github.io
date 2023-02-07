@@ -44,7 +44,7 @@ ix# ix mut system --failsafe=-
 
 ## Replace mingetty with emptty as login manager
 
-*ProTip:* First try looking at https://github.com/stal-ix/ix/blob/main/pkgs/set/stalix/unwrap/ix.sh#L17, and come up with what the next command might look like!
+*ProTip:* First try looking at https://github.com/stal-ix/ix/blob/main/pkgs/set/system/0/unwrap/ix.sh#L18, and come up with what the next command might look like!
 
 *Warning:* if you don't have ~/.emptty configured, and don't have a failsafe console on tty5, then you may need a recovery.
 
