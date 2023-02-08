@@ -4,7 +4,7 @@
 
 **IX** renders obsolete many different ways to compile statically linked binaries:
 
-https://buildroot.org/
+[https://buildroot.org/](https://buildroot.org/)
 
 ```shell
 ix# ix build --target=linux-aarch64 --for_target=linux-riscv64 bin/gcc bin/binutils
