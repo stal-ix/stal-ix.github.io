@@ -128,6 +128,6 @@ cd /home/ix/ix
 ./ix mut $(./ix list)
 ```
 
-Rebuild world, again. And [add a whole new user, without sudo capability](https://github.com/stal-ix/ix/blob/main/docs/ETC.md#:~:text=Add%20a%20whole%20new%20user%2C%20without%20sudo%20capability%3A)<br>
+Rebuild world, again. And [add a whole new user, without sudo capability](https://github.com/stal-ix/stal-ix.github.io/blob/main/ETC.md#add-user)<br>
 
 Now try login from tty1
