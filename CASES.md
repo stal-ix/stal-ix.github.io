@@ -32,7 +32,7 @@ ix# ix build bin/tmux
 ```
 
 [how to build static git](https://stackoverflow.com/questions/11570188/how-to-build-git-with-static-linking)<br>
-[and again](https://github.com/EXALAB/git-static)<br>
+[again](https://github.com/EXALAB/git-static)<br>
 [and again...](https://gist.github.com/mishudark/3080857)
 
 ```shell
