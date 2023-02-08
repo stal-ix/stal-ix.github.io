@@ -4,28 +4,28 @@
 
 **IX** renders obsolete many different ways to compile statically linked binaries:
 
-[https://buildroot.org/](https://buildroot.org/)
+[buildroot](https://buildroot.org/)
 
 ```shell
 ix# ix build --target=linux-aarch64 --for_target=linux-riscv64 bin/gcc bin/binutils
 ```
 
-https://github.com/rsms/llvmbox
+[llvmbox](https://github.com/rsms/llvmbox)
 
 ```shell
 ix# ix build --target=linux-aarch64 bin/clang/16
 ```
 
-https://www.busybox.net/downloads/binaries/
+[busybox](https://www.busybox.net/downloads/binaries/)
 
 ```shell
 ix# ix build --target=linux-aarch64 --purec=musl/pure bin/busybox/ix
 ix# ix build --target=linux-aarch64 --purec=uclibc/ng bin/busybox/ix
 ```
 
-https://github.com/mjakob-gh/build-static-tmux<br>
-https://github.com/maciejjo/static-tmux<br>
-https://stackoverflow.com/questions/62620514/building-static-executable-tmux-on-linux
+[static tmux](https://github.com/mjakob-gh/build-static-tmux)<br>
+[another static tmux](https://github.com/maciejjo/static-tmux)<br>
+[and how to build one!](https://stackoverflow.com/questions/62620514/building-static-executable-tmux-on-linux)
 
 ```shell
 ix# ix build bin/tmux
