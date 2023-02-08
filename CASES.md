@@ -31,9 +31,9 @@ ix# ix build --target=linux-aarch64 --purec=uclibc/ng bin/busybox/ix
 ix# ix build bin/tmux
 ```
 
-https://stackoverflow.com/questions/11570188/how-to-build-git-with-static-linking<br>
-https://github.com/EXALAB/git-static<br>
-https://gist.github.com/mishudark/3080857
+[how to build static git](https://stackoverflow.com/questions/11570188/how-to-build-git-with-static-linking)<br>
+[and again](https://github.com/EXALAB/git-static)<br>
+[and again...](https://gist.github.com/mishudark/3080857)
 
 ```shell
 ix# ix build bin/git
