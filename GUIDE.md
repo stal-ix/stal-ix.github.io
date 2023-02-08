@@ -49,8 +49,8 @@ To place below the title:
 * Prereq;
 * Document description. 
 
-Document sections are marked with [headings](https://github.com/stal-ix/ix/blob/main/docs/GUIDE.md#headings).<br>
-Special text blocks - with [horizontal rule](https://github.com/stal-ix/ix/blob/main/docs/GUIDE.md#horizontal-rule).
+Document sections are marked with [headings](GUIDE.md#headings).<br>
+Special text blocks - with [horizontal rule](GUIDE.md#horizontal-rule).
 
 ## Headings
 
