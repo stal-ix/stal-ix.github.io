@@ -131,3 +131,5 @@ cd /home/ix/ix
 Rebuild world, again. And [add a whole new user, without sudo capability](https://github.com/stal-ix/stal-ix.github.io/blob/main/ETC.md#add-user)<br>
 
 Now try login from tty1
+
+What next: [system configuration](ETC.md)
