@@ -251,4 +251,5 @@ vcpkg 2022.12.14
 steamos-compositor-plus 1.10.6
 clipboard 0.1.3
 yambar 1.9.0
-libdispatch 5.7.2```
+libdispatch 5.7.2
+```
