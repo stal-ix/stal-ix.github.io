@@ -1,4 +1,4 @@
-[stal/IX](STALIX.md) - statically linked linux, based on [IX](IX.md) package manager:
+[stal/IX](STALIX.md) - statically linked, source based, [bootstrapped](https://bootstrappable.org/) linux, based on [IX](IX.md) package manager:
 
 * clang
 * full static
