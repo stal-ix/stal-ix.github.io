@@ -84,8 +84,10 @@ Fetch **IX** package manager, will be used later, from **ix** user before reboot
 Some quirks:
 
 ```shell
-# TODO(pg83): describe
-mkdir -m 0777 ix/realm
+# like tmp dir, so realm symlink can be modified only by its creator/owner
+# it is important who create/own system realm, because only they can operate it
+# sudo chown {{username}} /ix/realm/system will help, iff one wants to transfer ownership 
+mkdir -m 01777 ix/realm
 ```
 
 And run **IX** package manager, to populate our root fs with bootstrap tools!
