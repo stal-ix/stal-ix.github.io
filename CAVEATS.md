@@ -26,4 +26,6 @@ very basic power management. For now, we run CPU full speed, because linux gover
 
 /etc/services, despite being part of read-only realm, are writeable for runit for now
 
+/dev/* protection is weak - https://github.com/stal-ix/ix/blob/main/pkgs/bin/mdevd/runit/scripts/bad.conf
+
 
