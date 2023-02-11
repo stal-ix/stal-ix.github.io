@@ -30,4 +30,6 @@ very basic power management. For now, we run CPU full speed, because linux gover
 
 IX runtime are not safe enough - execution nodes have full access to /, and network isolation not really enforced for now
 
+Service supervisor looks like more of a stub, than of real program - https://github.com/stal-ix/ix/blob/main/pkgs/bin/runsrv/srv
+
 
