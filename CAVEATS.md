@@ -1,7 +1,6 @@
 after boot main alsa channel can be muted, adjust volume with alsamixer, and don't forget to unmute channel (with M)
 
 volume settings don't survive reboot. Add to your session script (e.g. .profile):
-
 ```shell
 amixer sset Master unmute
 amixer sset Master 100%
@@ -16,7 +15,6 @@ actually, any global state don't survive reboot, system completely stateless by 
 no logrotate for logs in /var/run/, but, they also don't survive reboot, so, this is not a real problem for now
 
 /ix/build folder trashed every 1000 seconds or [so](https://github.com/stal-ix/ix/blob/main/pkgs/bin/sched/builddir/ix.sh#L11), so, if one wants to debug build problems, it should do one of the:
-
 * copy build dir somewhere else
 * or, disable this scheduler altogeter
 
