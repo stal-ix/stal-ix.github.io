@@ -28,4 +28,6 @@ very basic power management. For now, we run CPU full speed, because linux gover
 
 /dev/* protection is weak - https://github.com/stal-ix/ix/blob/main/pkgs/bin/mdevd/runit/scripts/bad.conf
 
+IX runtime are not safe enough - execution nodes have full access to /, and network isolation not really enforced for now
+
 
