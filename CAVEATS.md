@@ -20,4 +20,8 @@ user# cat /etc/sche.d/1000/builddir.sh
 * copy build dir somewhere else
 * or, disable this scheduler altogeter
 
+acpi rules very approximate, actually, activated only on lid close/open
+
+
+
 
