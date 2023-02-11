@@ -134,4 +134,7 @@ Rebuild world, again. And [add a whole new user, without sudo capability](https:
 
 Now try login from tty1
 
-What next: [system configuration](ETC.md)
+What next: 
+
+[some quirks](CAVEATS.md)<br>
+[system configuration](ETC.md)
