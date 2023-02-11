@@ -22,6 +22,4 @@ user# cat /etc/sche.d/1000/builddir.sh
 
 acpi rules very approximate, actually, activated only on lid close/open
 
-
-
-
+very basic power management. For now, we run CPU full speed, because linux governors are mess
