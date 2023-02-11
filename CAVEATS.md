@@ -10,4 +10,14 @@ actually, any global state don't survive reboot, system completely stateless by 
 
 no logrotate for logs in /var/run/, but, they also don't survive reboot, so, this is not a real problem for now
 
+```shell
+user# cat /etc/sche.d/1000/builddir.sh 
+/bin/flock -nx /ix /bin/sh -c 'mv /ix/build/* /ix/trash/'
+```
+
+/ix/build folder trashed every 1000 seconds or so, so, if one wants to debug build problems, it should do on of the:
+
+* copy build dir somewhere else
+* or, disable this scheduler altogeter
+
 
