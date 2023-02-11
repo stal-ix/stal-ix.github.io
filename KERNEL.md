@@ -86,6 +86,7 @@ Herewith:
  * Some drivers require firmware. They'll need to be added to ix.sh for your kernel, as done in here: https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9.<br>
   *Pro tip:* run `dmesg | grep firmware` on running system for information about missing firmware!
  * Read how to build a kernel generally in a source based distro - https://wiki.gentoo.org/wiki/Kernel/Configuration
+ * Don't forget to add cgroup, user namespaces, network namespaces support for your kernel!
 ---
 
 Or, alternatively, one can combine previous commands into one:
