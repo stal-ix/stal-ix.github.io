@@ -83,9 +83,9 @@ You need to find all the modules from the list above in the configurator (it has
 Herewith:
 
  * Don't forget to add all the necessary buses for your devices (USB, I2C, PCIe, NVMe, etc.)
- * Some drivers require firmware. They'll need to be added to ix.sh for your kernel, as done in here: https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9.<br>
+ * Some drivers require firmware. They'll need to be added to ix.sh for your kernel, as done in here: [https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9](https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9).<br>
   *Pro tip:* run `dmesg | grep firmware` on running system for information about missing firmware!
- * Read how to build a kernel generally in a source based distro - https://wiki.gentoo.org/wiki/Kernel/Configuration
+ * Read how to build a kernel generally in a source based distro - [https://wiki.gentoo.org/wiki/Kernel/Configuration](https://wiki.gentoo.org/wiki/Kernel/Configuration).
  * Don't forget to add cgroup, user namespaces, network namespaces support for your kernel!
 ---
 
@@ -99,7 +99,7 @@ ix# ix tool reconf $(dirname $(which ix))/pkgs/bin/kernel/6/0/slot/1/cfg
 
 Mostly, to understand what needs to be included in the kernel config for a particular device operation, it helps to search the Internet, with module's name and a link to Gentoo/Arch, they have the largest knowledge base on the subject:
 
- * Here, for example, is a list of what needs to be done to get AMD GPU support operating - https://wiki.gentoo.org/wiki/AMDGPU
+ * Here, for example, is a list of what needs to be done to get AMD GPU support operating - [https://wiki.gentoo.org/wiki/AMDGPU](https://wiki.gentoo.org/wiki/AMDGPU).
 
 After the kernel is configured, copy the modified config to the base:
 
