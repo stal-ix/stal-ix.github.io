@@ -214,7 +214,7 @@ The command finds all unused packages in /ix/store/ and moves them to the /ix/tr
 
 View a list of all realms, or installed packages (with flags) in a specific realm.
 
-A list of all available packages can be found at https://github.com/stal-ix/ix/tree/main/pkgs, or in the pkgs/ folder in your clone of the main repository.
+A list of all available packages can be found at [https://github.com/stal-ix/ix/tree/main/pkgs](https://github.com/stal-ix/ix/tree/main/pkgs), or in the pkgs/ folder in your clone of the main repository.
 
 `ix mut $(ix list)`
 
