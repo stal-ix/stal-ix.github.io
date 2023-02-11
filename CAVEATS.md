@@ -15,7 +15,7 @@ user# cat /etc/sche.d/1000/builddir.sh
 /bin/flock -nx /ix /bin/sh -c 'mv /ix/build/* /ix/trash/'
 ```
 
-/ix/build folder trashed every 1000 seconds or so, so, if one wants to debug build problems, it should do on of the:
+/ix/build folder trashed every 1000 seconds or so, so, if one wants to debug build problems, it should do one of the:
 
 * copy build dir somewhere else
 * or, disable this scheduler altogeter
