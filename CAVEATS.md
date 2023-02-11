@@ -6,4 +6,4 @@ logs doesn't survive reboot
 
 iwctl passwords doesn't survive reboot
 
-actually, any global state don't survive reboot, need to investigate proper solution for this
+actually, any global state don't survive reboot, system completely stateless by now, need to investigate proper solution for this
