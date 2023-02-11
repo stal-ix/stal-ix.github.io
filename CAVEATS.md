@@ -1,6 +1,11 @@
 after boot main alsa channel can be muted, adjust volume with alsamixer, and don't forget to unmute channel (with M)
 
-volume settings don't survive reboot
+volume settings don't survive reboot. Add to your session script (e.g. .profile):
+
+```shell
+amixer -c 1 sset Master unmute
+amixer -c 1 sset Master 100%
+```
 
 logs doesn't survive reboot
 
