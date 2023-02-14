@@ -57,7 +57,7 @@ The main point is that the project-level build system should not autodetect the 
 
 The problem is that, at any given time, it is easier for the author of this or that OSS project to crutch up the next vendoring, instead of going to negotiate with all interested parties.
 
-Separately, I note that these crutch package managers are completely shitty. I would really like to see how cargo, for example, tries to vendor any lib with settings and data for this lib.
+Separately, I note that these kludge package managers are completely crap. I would really like to see how cargo, for example, tries to vendor any lib with settings and data for this lib.
 
 - - -
 
