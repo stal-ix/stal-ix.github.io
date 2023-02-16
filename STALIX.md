@@ -102,7 +102,8 @@ Quite often, upstream is not interested in the ideas inherent in **stal/IX**:
 * [tty freeze after sway death](https://github.com/swaywm/sway/issues/4540), and [fix that can't enter upstream](https://github.com/stal-ix/ix/blob/main/pkgs/bin/fixtty/main.c);
 * [fake dlopen, for projects that can't live without external plugins](https://github.com/pg83/dlopen); 
 * [XCURSOR_SIZE support in gtk](https://github.com/stal-ix/ix/blob/main/pkgs/lib/gtk/4/stock/0.diff);
-* [support for alternative database of mime types in glib](https://github.com/stal-ix/ix/blob/main/pkgs/lib/glib/ix/1.diff); 
+* [support for alternative database of mime types in glib](https://github.com/stal-ix/ix/blob/main/pkgs/lib/glib/ix/1.diff);
+* [by default, linux kernel eat CPU cycles on breakfast](https://www.phoronix.com/news/Linux-Default-Mitigations-Off), [we disable it by default](https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/t/2/ix.sh#L21);
 * [custom gdk-pixbuf SVG loader, over lunasvg (instead of rsvg)](https://github.com/stal-ix/ix/blob/main/pkgs/lib/lunasvg/gdk/io.cpp).
 
 Therefore, we have to maintain a set of fixes and adjustments for upstream that will never be merged into upstream.
