@@ -1,7 +1,7 @@
 # stal/IX blog
 
 > About building systems in a different way, static linking, and much more!<br>
-> And about the stal/IX, of course, from the benevolent dictator (@pg83).
+> And about the stal/IX, of course, from the benevolent dictator [(@pg83)](https://github.com/pg83).
 
 - - -
 
@@ -10,7 +10,7 @@
 
 #ix #stal/ix #loginshell #interactiveshell
 
-In previous posts I wrote why I started my Linux distribution (Why stal/IX. [Part 1](BLOG.md#why-stalix-part-1) | [Part 2](BLOG.md#part-two-why-this-way-not-otherwise) | [Part 3](BLOG.md#why-stalix-part-3)).
+In previous posts I wrote why I started my Linux distribution (Why stal/IX. [Part 1](BLOG.md#why-stalix-part-1), [Part 2](BLOG.md#part-two-why-this-way-not-otherwise), [Part 3](BLOG.md#why-stalix-part-3)).
 
 In short, a lot of things done in Unix/Linux piss me off, and the easiest way to fix them is to have control over the whole environment!
 
