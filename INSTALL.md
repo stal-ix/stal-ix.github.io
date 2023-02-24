@@ -136,5 +136,6 @@ Now try login from tty1
 
 What next: 
 
+[setup wifi](WIFI.md)<br>
 [some quirks](CAVEATS.md)<br>
 [system configuration](ETC.md)
