@@ -1,4 +1,4 @@
-quick and dirty
+Fast path:
 
 ```shell
 user# ix mut bin/iwd/ctl # install iwctl into user realm
@@ -11,4 +11,4 @@ user# iwctl
 > station wlan0 connect <SSID>
 ```
 
-[detailed description](https://wiki.archlinux.org/title/Iwd#iwctl)
+or, alternatively, [detailed description](https://wiki.archlinux.org/title/Iwd#iwctl)
