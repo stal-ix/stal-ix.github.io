@@ -1,3 +1,5 @@
+quick and dirty
+
 ```shell
 user# ix mut bin/iwd/ctl # install iwctl into user realm
 user# iwctl
@@ -8,3 +10,5 @@ user# iwctl
 ...<SSID>...
 > station wlan0 connect <SSID>
 ```
+
+[detailed description](https://wiki.archlinux.org/title/Iwd#iwctl)
