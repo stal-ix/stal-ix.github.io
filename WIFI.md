@@ -1,6 +1,6 @@
 ```shell
-ix# ix mut bin/iwd/ctl # install iwctl into user realm
-ix# iwctl
+user# ix mut bin/iwd/ctl # install iwctl into user realm
+user# iwctl
 > device list
 ...wlan0...
 > station wlan0 scan
