@@ -12,5 +12,5 @@
 [Blog](BLOG.md)<br>
 [Design](STALIX.md)<br>
 [Support](https://t.me/stal_ix)<br>
-[Source Code](https://github.com/stal-ix/ix)<br>
+[Download](https://github.com/stal-ix/ix)<br>
 [Install instructions](INSTALL.md)
