@@ -1,24 +1,28 @@
-Prereq: FS.md, IX.md
+# Accel
 
-stal/IX - статически слинкованный дистрибутив Linux, поэтому и 3D драйвера вкомпилированы статически.
+> Prereq:<br>
+> [FS.md](FS.md)<br>
+> [IX.md](IX.md)
 
-Драйвер, с которым собирается приложение, зависит от переменной mesa_driver.
+**stal/IX** is a statically linked Linux distribution, so the 3D drivers are also compiled statically.
 
-Ее можно установить на realm:
+The driver that the application is built with depends on the mesa_driver variable.
+
+It can be installed on realm:
 
 ```shell
 user# ix mut --mesa_driver=radeonsi
 ```
 
-Тогда все приложения, собираемые в этом realm через ix mut/ix let, будут использовать выбранный драйвер.
+Then all applications built in this realm via ix mut/ix let will use the selected driver.
 
-Или для отдельного приложения:
+Or for a standalone application:
 
 ```shell
 user# ix build bin/gnome/text/editor --mesa_driver=anv
 ```
 
-Как получить список доступных драйверов:
+How to get a list of available drivers:
 
 ```
 user# ix tool listall | grep mesa | grep drivers/
@@ -34,20 +38,20 @@ lib/mesa/drivers/valve
 lib/mesa/drivers/vulkan
 ```
 
-Rule of thumb - если название - это имя vulkan драйвера из mesa, то, в качестве opengl драйвера будет выбран Zink - https://docs.mesa3d.org/drivers/zink.html
+Rule of thumb - if the name is the name of the vulkan driver from mesa, then Zink will be selected as the opengl driver - https://docs.mesa3d.org/drivers/zink.html.
 
-Поэтому, чтобы использовать zink + vulkan amd radv driver, выполните:
+So to use zink + vulkan amd radv driver run:
 
 ```shell
 user# ix mut --mesa_driver=radv
 ```
 
-Если у вас работает связка zink + vulkan, то она является предпочтительной, потому что компилятор шейдеров ACO существенно меньше по размеру, чем LLVM вариант.
+If zink + vulkan bunch works for you, then it is preferable, because the ACO shader compiler is significantly smaller in size than the LLVM option.
 
-Quirks:
-* Если вы хотите использовать связку zink + vulkan, то рекомендуется добавить в ваше сессионный скрипт 
+## Quirks:
+* If you want to use zink + vulkan, it is recommended to add to your session script: 
 ```shell
-export WLR_RENDERER=vulkan # для wlroots-based композиторов
+export WLR_RENDERER=vulkan # for wlroots-based composers
 export MESA_LOADER_DRIVER_OVERRIDE=zink
 ```
-* Intel cards operates with mesa_driver=iris, but fails with mesa_driver=anv
+* Intel cards operates with mesa_driver=iris, but fails with mesa_driver=anv.
