@@ -7,7 +7,7 @@ stal/IX - статически слинкованный дистрибутив L
 Ее можно установить на realm:
 
 ```shell
-user# ix mut --mesa_driver=radv
+user# ix mut --mesa_driver=radeonsi
 ```
 
 Тогда все приложения, собираемые в этом realm через ix mut/ix let, будут использовать выбранный драйвер.
