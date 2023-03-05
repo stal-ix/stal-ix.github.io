@@ -92,7 +92,7 @@ All packages are compiled as if host platform != target platform, thus, we achie
 
 ## File associations
 
-The existing mechanisms for linking programs to file types are complex, fragile, and difficult to integrate into IX realms. https://wiki.archlinux.org/title/XDG_MIME_Applications
+The existing mechanisms for associating programs to file types are complex, fragile, and difficult to integrate into IX realms. https://wiki.archlinux.org/title/XDG_MIME_Applications
 
 Therefore, stal/IX has its own mechanism for linking programs to file types. It is based on the [xdg-open-dispatch](https://github.com/stal-ix/ix/blob/main/pkgs/bin/xdg/open/scripts/xdg-open-dispatch) script, and changes in upstream to redirect their mechanisms to xdg-open, patch for [epiphany WEB browser](https://github.com/stal-ix/ix/blob/main/pkgs/bin/epiphany/4/ix.sh#L32). 
 
