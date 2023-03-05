@@ -58,3 +58,6 @@ The system uses UTC time by default. There is currently no global timezone setti
 ```shell
 export TZ=Europe/Moscow
 ```
+
+## Setup 3D driver
+[ACCEL.md](ACCEL.md)
