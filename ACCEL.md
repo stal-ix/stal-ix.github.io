@@ -39,4 +39,9 @@ Rule of thumb - если название - это имя vulkan драйвер�
 Если у вас работает связка zink + vulkan, то она является предпочтительной, потому что компилятор шейдеров ACO существенно меньше по размеру, чем LLVM вариант.
 
 Quirks:
-* Intel plugin operates with mesa_driver=iris, but fails with mesa_driver=anv
+* Если вы хотите использовать связку zink + vulkan, то рекомендуется добавить в ваше сессионный скрипт 
+```shell
+export WLR_RENDERER=vulkan # для wlroots-based композиторов
+export MESA_LOADER_DRIVER_OVERRIDE=zink
+```
+* Intel cards operates with mesa_driver=iris, but fails with mesa_driver=anv
