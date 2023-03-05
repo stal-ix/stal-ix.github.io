@@ -34,5 +34,9 @@ lib/mesa/drivers/valve
 lib/mesa/drivers/vulkan
 ```
 
+Rule of thumb - если название - это имя vulkan драйвера из mesa, то, в качестве opengl драйвера будет выбран Zink - https://docs.mesa3d.org/drivers/zink.html
+
+Если у вас работает связка zink + vulkan, то она является предпочтительной, потому что компилятор шейдеров ACO существенно меньше по размеру, чем LLVM вариант.
+
 Quirks:
 * Intel plugin operates with mesa_driver=iris, but fails with mesa_driver=anv
