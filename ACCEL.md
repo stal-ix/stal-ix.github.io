@@ -36,6 +36,12 @@ lib/mesa/drivers/vulkan
 
 Rule of thumb - если название - это имя vulkan драйвера из mesa, то, в качестве opengl драйвера будет выбран Zink - https://docs.mesa3d.org/drivers/zink.html
 
+Поэтому, чтобы использовать zink + vulkan amd radv driver, выполните:
+
+```shell
+user# ix mut --mesa_driver=radv
+```
+
 Если у вас работает связка zink + vulkan, то она является предпочтительной, потому что компилятор шейдеров ACO существенно меньше по размеру, чем LLVM вариант.
 
 Quirks:
