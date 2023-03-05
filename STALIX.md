@@ -90,6 +90,12 @@ Every user session must start from the login shell, even in ssh daemon.
 
 All packages are compiled as if host platform != target platform, thus, we achieve that the package base is built for all platforms most of the time. We have a cross-compiling CI for aarch64 and riscv!
 
+## File associations
+
+Существующие механизмы привязки программ к типам файлов сложны, хрупки, и их сложно интегрировать в IX realms. https://wiki.archlinux.org/title/XDG_MIME_Applications
+
+Поэтому в stal/IX существует свой механизм привязки программ к типам файлов. Он основан на скрипте [xdg-open-dispatch](https://github.com/stal-ix/ix/blob/main/pkgs/bin/xdg/open/scripts/xdg-open-dispatch), и на изменениях в upstream, призванных перенаправить их механизмы в xdg-open ()
+
 ## Interaction with upstream
 
 Quite often, upstream is not interested in the ideas inherent in **stal/IX**:
