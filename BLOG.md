@@ -168,7 +168,9 @@ What does this give us?
 [https://github.com/pg83/ix/blob/main/pkgs/set/ci/unwrap/linux/aarch64/ix.sh](https://github.com/pg83/ix/blob/main/pkgs/set/ci/unwrap/linux/aarch64/ix.sh) - a list of what I regularly build under aarch64. There is also gdb, and even graphics programs!
 
 * New opportunities for bootstrap. For example, Go is currently not reproducible in terms of the classical ways (package managers and build systems) because the latest version of Go compiled by the C compiler cannot build code under M1, and is not built under it. I can now approach this problem by writing in the build file for go something like:
-```shell
+
+<!-- {% raw %} -->
+```
 {% block bld_tool %}
 bin/qemu(for_target=linux-x86_64)
 bin/kernel(target=linux-x86_64)
@@ -176,6 +178,8 @@ bin/busybox(target=linux-x86_64)
 bin/go/1.4/(target=linux-x86_64)
 {% endblock %}
 ```
+<!-- {% endraw %} -->
+
 Raise in this assembly node qemu (which I built myself), linux kernel, go1.4, and run the bootstrap chain there. And it will work, including under host == darwin.
 
 It seems to me now that I have achieved something that no one has done before in open source. All autobuild cross-compiling solutions known to me are based on the fact that someone prepared pre-built tools by hand, so they have a rather small scope.
