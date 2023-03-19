@@ -2,6 +2,8 @@
 
 > This guide defines the temporary standard for the **stal/IX** documentation formatting on GitHub.
 
+<!-- {% raw %} -->
+
 ---
 
 ### TL;DR Markup conventions
@@ -183,3 +185,5 @@ In the document’s body the block is highlighted with two separation-lines, abo
 ## Ignoring Markdown formatting
 
 To ignore Markdown formatting, use `\` before a Markdown symbol.
+
+<!-- {% endraw %} -->
