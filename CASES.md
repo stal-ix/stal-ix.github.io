@@ -2,6 +2,8 @@
 
 > Why you should try **IX**
 
+<!-- {% raw %} -->
+
 **IX** renders obsolete many different ways to compile statically linked binaries:
 
 [buildroot](https://buildroot.org/)
@@ -38,3 +40,5 @@ ix# ix build bin/tmux
 ```shell
 ix# ix build bin/git
 ```
+
+<!-- {% endraw %} -->
