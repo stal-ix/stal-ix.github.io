@@ -4,6 +4,8 @@
 > [FS.md](FS.md)<br>
 > [IX.md](IX.md)
 
+<!-- {% raw %} -->
+
 **stal/IX** is a statically linked Linux distribution, so the 3D drivers are also compiled statically.
 
 The driver that the application is built with depends on the mesa_driver variable.
@@ -24,7 +26,7 @@ user# ix build bin/gnome/text/editor --mesa_driver=anv
 
 How to get a list of available drivers:
 
-```
+```shell
 user# ix tool listall | grep mesa | grep drivers/
 lib/mesa/drivers/anv
 lib/mesa/drivers/iris
@@ -55,3 +57,5 @@ export WLR_RENDERER=vulkan # for wlroots-based composers
 export MESA_LOADER_DRIVER_OVERRIDE=zink
 ```
 * Intel cards operates with mesa_driver=iris, but fails with mesa_driver=anv.
+
+<!-- {% endraw %} -->
