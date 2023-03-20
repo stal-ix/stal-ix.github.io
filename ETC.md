@@ -4,6 +4,7 @@
 > [FS.md](FS.md)<br>
 > [IX.md](IX.md)
 
+<!-- {% raw %} -->
 
 /etc in **stal/IX** is a symbolic link to etc/ from the system realm:
 
@@ -61,3 +62,5 @@ export TZ=Europe/Moscow
 
 ## Setup 3D driver
 [ACCEL.md](ACCEL.md)
+
+<!-- {% endraw %} -->
