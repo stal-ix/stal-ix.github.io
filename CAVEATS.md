@@ -2,6 +2,8 @@
 
 > This document contains a regularly replenishing list of warnings and cautions. Pay attention, don't miss it out.
 
+<!-- {% raw %} -->
+
 **Main alsa channel** after boot can be muted, adjust volume with alsamixer, and don't forget to unmute channel (with M).
 
 **Volume settings** don't survive reboot. Add to your session script (e.g. .profile):
@@ -34,3 +36,5 @@ amixer sset Master 100%
 **IX runtime** are not safe enough - execution nodes have full access to /, and network isolation currently not really enforced.
 
 **Service supervisor** is more like a stub than a real program - [https://github.com/stal-ix/ix/blob/main/pkgs/bin/runsrv/srv](https://github.com/stal-ix/ix/blob/main/pkgs/bin/runsrv/srv).
+
+<!-- {% endraw %} -->
