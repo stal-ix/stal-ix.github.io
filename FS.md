@@ -3,6 +3,7 @@
 
 > This document describes the **stal/IX** file system layout.
 
+<!-- {% raw %} -->
 
 The /ix/store/ contains a folders set, each package corresponds to one folder.<br>
 Folders form a content addressable store, that is, all paths uniquely identify a unique package.
@@ -61,3 +62,5 @@ pg-> echo ${PATH}
 ```
 
 To make it work, your session manager must do `. /etc/session`
+
+<!-- {% endraw %} -->
