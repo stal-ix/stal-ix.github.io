@@ -31,7 +31,7 @@ amixer sset Master 100%
 
 **/etc/services**, despite being part of read-only realm, are currently writeable for runit.
 
-**/dev/* protection** is weak - [https://github.com/stal-ix/ix/blob/main/pkgs/bin/mdevd/runit/scripts/bad.conf](https://github.com/stal-ix/ix/blob/main/pkgs/bin/mdevd/runit/scripts/bad.conf).
+**/dev/protection** is weak - [https://github.com/stal-ix/ix/blob/main/pkgs/bin/mdevd/runit/scripts/bad.conf](https://github.com/stal-ix/ix/blob/main/pkgs/bin/mdevd/runit/scripts/bad.conf).
 
 **IX runtime** are not safe enough - execution nodes have full access to /, and network isolation currently not really enforced.
 
