@@ -4,6 +4,7 @@
 > [IX.md](IX.md)<br>
 > [FS.md](FS.md)<br>
 
+<!-- {% raw %} -->
 
 Load machine from some bootable media, like Ubuntu/Fedora/Nix livecd, launch terminal
 
@@ -139,3 +140,5 @@ What next:
 [setup wifi](WIFI.md)<br>
 [some quirks](CAVEATS.md)<br>
 [system configuration](ETC.md)
+
+<!-- {% endraw %} -->
