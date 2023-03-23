@@ -1,3 +1,4 @@
+![logo](ixpm_01.png)
 [stal/IX](STALIX.md) - statically linked, source based, [bootstrapped](https://bootstrappable.org/) [rolling](https://en.wikipedia.org/wiki/Rolling_release) Linux, based on [IX](IX.md) package manager:
 
 * clang
