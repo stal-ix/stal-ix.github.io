@@ -1,5 +1,14 @@
-![logo](stalix_04.png)<br>
-[stal/IX](STALIX.md) - statically linked, source based, [bootstrapped](https://bootstrappable.org/) [rolling](https://en.wikipedia.org/wiki/Rolling_release) Linux, based on [IX](IX.md) package manager:
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="/images/stalix_02.png" width="250px" height="100px">
+<source media="(prefers-color-scheme: light)" srcset="/images/stalix_01.png" width="250px" height="100px">
+<img alt="logo" src="https://raw.githubusercontent.com/stal-ix/stal-ix.github.io/main/images/stalix_01.png" width="250px" height="100px">
+</picture>
+
+<br>
+<br>
+
+
+**[stal/IX](STALIX.md)** - statically linked, source based, [bootstrapped](https://bootstrappable.org/) [rolling](https://en.wikipedia.org/wiki/Rolling_release) Linux, based on [IX](IX.md) package manager:
 
 * clang
 * full static
@@ -15,3 +24,5 @@
 [Support](https://t.me/stal_ix)<br>
 [Download](https://github.com/stal-ix/ix)<br>
 [Install instructions](INSTALL.md)
+
+#### We are pleased to [officially announce](RELEASE.md) the alpha release of stal/IX!
