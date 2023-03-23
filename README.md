@@ -1,4 +1,4 @@
-![logo](stalix_04.png)
+![logo](stalix_04.png)<br>
 [stal/IX](STALIX.md) - statically linked, source based, [bootstrapped](https://bootstrappable.org/) [rolling](https://en.wikipedia.org/wiki/Rolling_release) Linux, based on [IX](IX.md) package manager:
 
 * clang
