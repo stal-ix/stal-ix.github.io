@@ -33,7 +33,7 @@ Creator and lead developer **[Anton Samokhvalov](https://github.com/pg83)** abou
 
 - - -
 
-Unlike traditional Linux distributions that rely on dynamic linking and shared libraries, **stal/IX** is statically linked and includes all of the libraries needed to run the operating system and its applications.
+Unlike traditional Linux distributions that rely on dynamic linking and shared libraries, **stal/IX** is statically linked.
 
 Our source-based approach allows users to build their own packages from scratch, giving them complete control over their system, while our rolling release model ensures that users always have access to the latest updates.
 
