@@ -14,7 +14,7 @@ In addition, **stal/IX** features a file system layout inspired by Nix, which al
 
 "We're thrilled to release the alpha version of stal/IX," said the **stal/IX** development team. "We believe that our innovative approach to package management and distribution will provide users with a faster, more secure, and more efficient Linux experience."
 
-The alpha version of **stal/IX** is available for download now. For more information, please visit the **stal/IX** website at ~~https://stalix.org/~~ [https://stalix.github.io](https://stal-ix.github.io).
+The alpha version of **stal/IX** is available for download now. For more information, please visit the **stal/IX** website at ~~https://stalix.org/~~ [https://stal-ix.github.io](https://stal-ix.github.io).
 
 About **stal/IX**
 **stal/IX** is a new statically linked, source-based, bootstrapped rolling Linux operating system based on the IX package manager with an Nix-inspired file system layout. It offers a modern, streamlined, and efficient experience for users who demand the very best from their operating system.
