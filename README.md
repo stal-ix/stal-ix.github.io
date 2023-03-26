@@ -1,9 +1,5 @@
 <img alt="logo" src="https://raw.githubusercontent.com/stal-ix/stal-ix.github.io/main/images/stalix_light.png" width="250px" height="100px">
 
-<br>
-<br>
-
-
 **[stal/IX](STALIX.md)** - statically linked, source based, [bootstrapped](https://bootstrappable.org/) [rolling](https://en.wikipedia.org/wiki/Rolling_release) Linux, based on [IX](IX.md) package manager:
 
 * clang
