@@ -1,6 +1,4 @@
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="/images/stalix_dark.png" width="250px" height="100px">
-<source media="(prefers-color-scheme: light)" srcset="/images/stalix_light.png" width="250px" height="100px">
 <img alt="logo" src="https://raw.githubusercontent.com/stal-ix/stal-ix.github.io/main/images/stalix_light.png" width="250px" height="100px">
 </picture>
 
