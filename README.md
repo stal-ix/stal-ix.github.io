@@ -1,6 +1,4 @@
-<picture>
 <img alt="logo" src="https://raw.githubusercontent.com/stal-ix/stal-ix.github.io/main/images/stalix_light.png" width="250px" height="100px">
-</picture>
 
 <br>
 <br>
