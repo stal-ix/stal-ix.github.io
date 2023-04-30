@@ -11,7 +11,7 @@
 * no(almost) binary seeds, only compiler and dash
 
 [Why](CASES.md)<br>
-[Blog](BLOG.md)<br>
+[Blog](https://medium.com/@anton_samokhvalov)<br>
 [Design](STALIX.md)<br>
 [Support](https://t.me/stal_ix)<br>
 [Download](https://github.com/stal-ix/ix)<br>
