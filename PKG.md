@@ -145,7 +145,6 @@ X=Y
 # цели для сборки
 all
 all-static
-```
 {% endblock %}
 ```
 
