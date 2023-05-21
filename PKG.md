@@ -68,8 +68,8 @@ patch -p0 << EOF
 ..some inline patch, or
 {% include 'patch.diff' %}
 EOF
-```
 {% endblock %}
+```
 
 Блоки некоторых шаблонов имеет смысл не переопределять полностью, а дополнять:
 
@@ -78,6 +78,7 @@ EOF
 export Y=X
 {{super()}}
 rm some_trash_file
+{% endblock %}
 ```
 
 ```shell
