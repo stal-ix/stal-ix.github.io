@@ -1,49 +1,56 @@
+# PKG
+
+> This document aims to explain how to write your own build scripts but does not contain arguments for choosing this way of developing them.
+
+ix.sh is a Jinja2 template that generates an sh script similar to PKGBUILD scripts. Therefore, it is essential to read the Jinja2 guide:<br> 
+[https://jinja.palletsprojects.com/en/3.1.x/](https://jinja.palletsprojects.com/en/3.1.x/).
+
+At the beginning of ix.sh, you need to select a template that corresponds to the package build system. You can find the list here - [https://github.com/stal-ix/ix/tree/main/pkgs/die/c](https://github.com/stal-ix/ix/tree/main/pkgs/die/c).
+
 <!-- {% raw %} -->
-
-ix.sh представляют из себя jinja2 шаблон, из которого генерируется sh script, в чем-то похожий на скрипты PKGBUILD. Поэтому обязательно прочтите гайд по jinja2! https://jinja.palletsprojects.com/en/3.1.x/
-
-Данный документ призван рассказать, как писать свои сборочные скрипты, но не содержит аргументации за выбор такого способа их разработки.
-
-В самом начале ix.sh нужно выбрать шаблон, соответствующий системе сборки пакета. Их список можно подсмотреть тут - https://github.com/stal-ix/ix/tree/main/pkgs/die/c
 
 ```shell
 {% extends '//die/c/autorehell.sh' %}
 ```
 
-// в начале пути обозначает путь относительно корня папки с пакетами. Если не указать //, то будет использован путь относительно папки с текущим пакетом.
+// at the beginning of the path indicates the path relative to the root of the packages folder. If you do not specify //, it will use the path relative to the folder with the current package.
 
-Блоки, общие для всех шаблонов:
+Blocks common to all templates:
 
 ```shell
 {% block fetch %}
 https://xxx.yyy/zzz
-sha: # тут идет указание sha256 checksum для скачанного файла
+sha: # specify the SHA256 checksum for the downloaded file here
 {% endblock %}
 ```
 
-Список транзитивно наследуемых библиотечных целей(под target platform) для библиотеки, превращается в bld_libs при сборке программы.
-```
+The list of transitively inherited library targets (on the target platform) for the library is transformed into bld_libs during program build.
+
+```shell
 {% lib_deps %}
 lib/c
 lib/c++
 {% endblock %}
 ```
 
-Список библиотек, используемых только при сборке какой-то цели, под target platform:
+The list of libraries used only during the build of a specific target on the target platform:
+
 ```shell
 {% block bld_libs %}
 lib/kernel
 {% endblock %}
 ```
 
-Список библиотек, используемых при сборке, под host platform. Чаще всего используется для сборки кодогенераторов, которые надо запустить во время сборки.
+The list of libraries used to build on the host platform. Most commonly used for building code generators that need to be run at build time.
+
 ```shell
 {% block host_libs %}
 lib/c
 {% endblock %}
 ```
 
-Список программ, которые могут вызваны во время сборки, под host platform. Специализированные сборочные шаблоны содержат заранее определенные списки с нужными программами, например, для GNU build system там будет make, perl, pkg-config
+The list of programs that can be called at build time under the host platform. Specialized build templates contain predefined lists with the necessary programs, for example, for the GNU build system, there will be make, Perl, pkg-config.
+
 ```shell
 {% block bld_tool %}
 bin/lz4
@@ -52,21 +59,24 @@ bld/bison
 {% endblock %}
 ```
 
-Список программ, которые могут понадобиться для запуска построенной цели:
+The list of programs that may be needed to run the built target:
+
 ```shell
 {% block run_deps %}
 bld/make
 {% endblock %}
 ```
 
-Блок, где можно выставить переменные среды, доступные во всех сборочных блоках:
+A block where you can set environment variables available in all build blocks:
+
 ```shell
 {% block setup %}
 export CFLAGS="-fcommon ${CFLAGS}"
 {% endblock %}
 ```
 
-Блок, содержащий инструкции для патчинга оригинальных исходников:
+A block containing instructions for patching the original source code:
+
 ```shell
 {% block patch %}
 patch -p0 << EOF
@@ -76,7 +86,7 @@ EOF
 {% endblock %}
 ```
 
-Блоки некоторых шаблонов имеет смысл не переопределять полностью, а дополнять:
+The blocks of some templates are better to be supplemented rather than fully overridden:
 
 ```shell
 {% block build %}
@@ -93,27 +103,28 @@ rm -rf ${out}/share/trash
 {% endblock %}
 ```
 
-А что такое {{super()}}, вы можете узнать из документации на jinja2! https://jinja.palletsprojects.com/en/3.1.x/
+You can learn about {{super()}} from the Jinja2 documentation: [https://jinja.palletsprojects.com/en/3.1.x/](https://jinja.palletsprojects.com/en/3.1.x/).
 
-Основные шаблоны:
+Main templates:
 
-* autohell.sh - GNU build system, без запуска autoreconf
-* autorehell.sh - то же самое, но с запуском autogen.sh, bootstrap.sh, или autoreconf напрямую
+* autohell.sh - GNU build system without running autoreconf
+* autorehell.sh - same as above, but with running autogen.sh, bootstrap.sh, or autoreconf directly
 
-Наследуют шаблон make.sh, со всеми доступными из него блоками.
+They inherit the make.sh template with all its available blocks.
 
-Дополнительно содержат блок с аргументами для запуска configure:
+Additionally, they contain a block with arguments for running configure:
+
 ```shell
 {% block configure_flags %}
 --with-python=python3
 {% endblock %}
 ```
 
-* meson.sh - meson build system, https://mesonbuild.com/
+* meson.sh - Meson build system, https://mesonbuild.com/
 
-Наследуют шаблон ninja.sh, со всеми доступными из него блоками.
+Inherits the ninja.sh template with all its available blocks.
 
-Дополнительные блоки:
+Additional blocks:
 
 ```shell
 {% block meson_flags %}
@@ -123,9 +134,9 @@ introspection=false
 
 * cmake.sh - CMAKE, https://cmake.org/
 
-Наследуют ninja.sh
+Inherit ninja.sh
 
-Дополнительные блоки:
+Additional blocks:
 
 ```shell
 {% block cmake_flags %}
@@ -133,11 +144,11 @@ SOME_COBOL_STYLE_VAR=OFF
 {% endblock %}
 ```
 
-* make.sh - проект содержит классический Makefile
+* make.sh - project contains a classic Makefile
 
-Наследует блок для сборки C/C++ проектов. Это не очень правильно, потому что на make можно описать и другую сборку, но, чаще всего, это именно C/C++ проект.
+Inherits the block for building C/C++ projects. This is not entirely correct because make can describe other builds as well, but most often it is used for C/C++ projects.
 
-Дополнительные блоки:
+Additional blocks:
 
 ```shell
 {% block make_flags %}
@@ -147,7 +158,7 @@ X=Y
 
 ```shell
 {% block make_target %}
-# цели для сборки
+# build targets
 all
 all-static
 {% endblock %}
@@ -155,11 +166,12 @@ all-static
 
 ```shell
 {% block make_install_target %}
-# цели для make install
+# make install targets
 install-static
 install-bin-static
 {% endblock %}
 ```
 
-* ninja.sh - общий шаблон для систем сборки, использующих Ninja под капотом.
+* ninja.sh - a general template for build systems that use Ninja under the hood.
 <!-- {% endraw %} -->
+
