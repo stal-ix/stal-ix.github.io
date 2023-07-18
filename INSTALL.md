@@ -1,4 +1,5 @@
-# Installation 
+# Installation
+<sup> The stal/IX on-disk installation guide </sup>
 
 > Prereq:<br>
 > [IX.md](IX.md)<br>
@@ -6,13 +7,13 @@
 
 <!-- {% raw %} -->
 
-Load machine from some bootable media, like Ubuntu/Fedora/Nix livecd, launch terminal
+Load the machine from a bootable media, such as Ubuntu/Fedora/Nix livecd, and launch the terminal:
 
 ```shell
 sudo sh
 ```
 
-Install tools:
+Install the tools:
 
 ```shell
 test -f /usr/bin/parted || yum install parted || apt-get install parted
@@ -20,17 +21,17 @@ test -f /usr/bin/g++ || yum install g++ || apt-get install g++
 test -f /usr/bin/git || yum install git || apt-get install git
 ```
 
-For general instructions about disk partitioning please refer to<br>
+For general instructions on disk partitioning, refer to<br>
 https://wiki.archlinux.org/title/installation_guide#Partition_the_disks.<br>
 
-Somehow prepare xfs on /dev/xxx, with parted, mkfs.xfs, and mount it:
+Prepare XFS on /dev/xxx using parted, mkfs.xfs, and mount it:
 
 ```shell
 mkdir /mnt/ix
 mount /dev/xxx /mnt/ix
 ```
 
-Prepare some symlinks, thus forming our future rootfs:
+Prepare some symlinks to form the future rootfs:
 
 ```shell
 cd /mnt/ix
@@ -42,40 +43,40 @@ ln -s / usr
 mkdir -p home/root var sys proc dev
 ```
 
-Add symlink, to trick **IX** package manager:
+Add a symlink to trick **IX** package manager:
 
 ```shell
 ln -s /mnt/ix/ix /ix
 ```
 
-Add user **ix**, which will own all packages in system(note: uid 1000 important):
+Add a user "**ix**" who will own all packages in the system (note: UID 1000 is important):
 
 ```shell
 useradd -u 1000 ix
 ```
 
-Prepare managed dir, owned by user **ix**, in /ix, /ix/realm, etc:
+Prepare a managed dir owned by user **ix**, in /ix, /ix/realm, etc:
 
 ```shell
 mkdir ix
 chown ix ix
 ```
 
-Prepare **ix** user home, owned by **ix**:
+Prepare the **ix** user home owned by **ix**:
 
 ```shell
 mkdir home/ix
 chown ix home/ix
 ```
 
-Change user, from now on will run all commands under **ix** user:
+Change the user to **ix** and run all commands under **ix** user:
 
 ```shell
 su ix
 cd /mnt/ix
 ```
 
-Fetch **IX** package manager, will be used later, from **ix** user before reboot, and by **root** user, after reboot:
+Fetch **IX** package manager, will be used later, from ix user before reboot and by root user after reboot:
 
 ```shell
 # we do not want to change our CWD
@@ -91,7 +92,7 @@ Some quirks:
 mkdir -m 01777 ix/realm
 ```
 
-And run **IX** package manager, to populate our root fs with bootstrap tools!
+And run **IX** package manager to populate the root fs with bootstrap tools:
 
 ```shell
 cd home/ix/ix
@@ -102,21 +103,21 @@ export IX_EXEC_KIND=local
 ./ix mut boot set/boot/all
 ```
 
-Now [prepare bootable kernel for your hardware](KERNEL.md). Reboot into grub, run:
+Now [prepare a bootable kernel for your hardware](KERNEL.md). Reboot into grub and run:
 
 ```shell
 > linux (hdX,gptY)/boot/kernel ro root=/dev/xxx
 > boot
 ```
 
-where X, Y - GRUB disk and partition numbers for /dev/xxx.
-After successful boot, switch into tty5, there will be root prompt.
+where X, Y - GRUB disk and partition numbers for /dev/xxx. 
+After a successful boot, switch into tty5, there will be a root prompt.
 
 ```shell
 . /etc/session
 ```
 
-Now we have some useful utilities in PATH, from /ix/realm/root.
+Now we have some useful utilities in PATH from /ix/realm/root.
 
 ```shell
 cd /home/ix/ix
@@ -124,16 +125,16 @@ cd /home/ix/ix
 ./ix mut system
 ```
 
-Shell will relaunch thereafter. Actually, after any modification of system realm, runit will reload all supervised process tree.
+Shell will relaunch thereafter. Actually, after any modification of the system realm, runit will reload the whole supervised process tree.
 
 ```shell
 cd /home/ix/ix
 ./ix mut $(./ix list)
 ```
 
-Rebuild world, again. And [add a whole new user, without sudo capability](https://github.com/stal-ix/stal-ix.github.io/blob/main/ETC.md#add-user)<br>
+Rebuild the world and [add a whole new user without sudo capability](https://github.com/stal-ix/stal-ix.github.io/blob/main/ETC.md#add-user)<br>
 
-Now try login from tty1
+Try logging in from tty1.
 
 What next: 
 
@@ -142,3 +143,4 @@ What next:
 [system configuration](ETC.md)
 
 <!-- {% endraw %} -->
+
