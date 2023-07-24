@@ -6,11 +6,11 @@
 
 
 **_Disclaimer:_**<br>
-*This guide is not for the faint of heart! It assumes that you have an idea what a statically linked kernel is and know how to build it for your hardware in some source-based distro.*
+*This guide is not for the faint of heart! It assumes that you have an idea of what a statically linked kernel is and know how to build it for your hardware in some source-based distro.*
 
 ---
 
-This guide implies **IX** package manager in your PATH:
+This guide implies the use of **IX** package manager in your PATH:
 
 ```shell
 ix# export PATH=/mnt/ix/home/ix/ix:${PATH}   # assumes we are in stal/IX installer, before reboot
@@ -20,9 +20,9 @@ ix# ix list
 ```
 ---
 
-The guide intended to build a kernel, which contains all the components necessary for operation.
+The guide intends to build a kernel that contains all the components necessary for operation.
 
-First you need to know the list of modules for your hardware support.
+First, you need to know the list of modules for your hardware support.
 
 You can download some conventional distro with a working hardware auto-detection system to do this.<br>
 It needs to execute:
@@ -47,9 +47,9 @@ ubuntu# lspci -k
 ...
 ```
 
-The last column - a list of modules we need, write it down.
+The last column - a list of modules that we need. Write them down.
 
-Next we need to prepare a directory with kernel sources, which we are building a config for. Let's say, we want to use kernel 6.0:
+Next, we need to prepare a directory with kernel sources for which we are building a config. Let's say we want to use kernel 6.0:
 
 ```shell
 ix# mkdir kernel
@@ -82,15 +82,15 @@ You need to find all the modules from the list above in the configurator (it has
 ---
 Herewith:
 
- * Don't forget to add all the necessary buses for your devices (USB, I2C, PCIe, NVMe, etc.)
- * Some drivers require firmware. They'll need to be added to ix.sh for your kernel, as done in here: [https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9](https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9).<br>
+ * Don't forget to add all the necessary buses for your devices (USB, I2C, PCIe, NVMe, etc.).
+ * Some drivers require firmware. They'll need to be added to ix.sh for your kernel, as done here: [https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9](https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9).<br>
   *Pro tip:* run `dmesg | grep firmware` on running system for information about missing firmware!
- * Read how to build a kernel generally in a source based distro - [https://wiki.gentoo.org/wiki/Kernel/Configuration](https://wiki.gentoo.org/wiki/Kernel/Configuration).
+ * Read how to build a kernel generally in a source-based distro - [https://wiki.gentoo.org/wiki/Kernel/Configuration](https://wiki.gentoo.org/wiki/Kernel/Configuration).
  * Don't forget to add cgroup, user namespaces, network namespaces support for your kernel!
 
 ---
 
-Or, alternatively, one can combine previous commands into one:
+Alternatively, you can combine previous commands into one:
 
 ```shell
 ...
@@ -98,7 +98,7 @@ ix# cd linux-6.0.12
 ix# ix tool reconf $(dirname $(which ix))/pkgs/bin/kernel/6/0/slot/1/cfg
 ```
 
-Mostly, to understand what needs to be included in the kernel config for a particular device operation, it helps to search the Internet, with module's name and a link to Gentoo/Arch, they have the largest knowledge base on the subject:
+Mostly, to understand what needs to be included in the kernel config for a particular device operation, it helps to search the Internet with the module's name and a link to Gentoo/Arch as they have the largest knowledge base on the subject:
 
  * Here, for example, is a list of what needs to be done to get AMD GPU support operating - [https://wiki.gentoo.org/wiki/AMDGPU](https://wiki.gentoo.org/wiki/AMDGPU).
 
@@ -108,7 +108,7 @@ After the kernel is configured, copy the modified config to the base:
 ix# cp .config $(dirname $(which ix))/pkgs/bin/kernel/6/0/slot/1/cfg
 ```
 
-After that you can add the kernel to the system realm in the usual way:
+After that, you can add the kernel to the system realm in the usual way:
 
 ```shell
 ix# ix mut system bin/kernel/6/0/slot/1
@@ -118,7 +118,7 @@ ix# ls /bin/kernel-*
 
 Remember that path, you will need it later, in GRUB cli or in grub.cfg.
 
-Or, alternatively, you can use separate realm for bootstrap kernel:
+Alternatively, you can use a separate realm for the bootstrap kernel:
 
 ```shell
 ix# ix mut kernel bin/kernel/6/0/slot/1
