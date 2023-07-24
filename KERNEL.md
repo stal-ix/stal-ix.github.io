@@ -10,7 +10,7 @@
 
 ---
 
-This guide implies the use of **IX** package manager in your PATH:
+This guide implies ix package manager in your PATH:
 
 ```shell
 ix# export PATH=/mnt/ix/home/ix/ix:${PATH}   # assumes we are in stal/IX installer, before reboot
