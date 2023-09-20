@@ -21,3 +21,5 @@ git pull
 ```
 
 Инструкции для ubuntu(Катя, наверное, можно скопировать сюда, вопрос с авторством): https://gist.github.com/pg83/4bdb11a2ca3602d949db26b4b2a66781?permalink_comment_id=4687160#gistcomment-4687160
+
+После наполнения диреткории с кешом, отправьте PR с добавлением нового зеркала в https://github.com/pg83/ix/blob/main/pkgs/die/scripts/mirrors.txt
