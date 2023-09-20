@@ -10,6 +10,7 @@ https://github.com/pg83/ix/blob/main/pkgs/die/scripts/mirrors.txt
 
 А можете запустить готовый скрипт в cron, например, раз в час:
 
+```
 # ~/ix - clone of https://github.com/stal-ix/ix
 # script will need gnu make, git, python3, wget in PATH
 # output will be in ~/some/dir
@@ -17,5 +18,6 @@ https://github.com/pg83/ix/blob/main/pkgs/die/scripts/mirrors.txt
 cd ~/ix
 git pull
 ./ix recache ~/some/dir
+```
 
 Инструкции для ubuntu(Катя, наверное, можно скопировать сюда, вопрос с авторством): https://gist.github.com/pg83/4bdb11a2ca3602d949db26b4b2a66781?permalink_comment_id=4687160#gistcomment-4687160
