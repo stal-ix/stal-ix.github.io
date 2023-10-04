@@ -22,6 +22,14 @@ git pull
 ./ix recache ~/some/dir
 ```
 
+**Instructions for stal/IX
+
+```
+# ix mut system bin/ix/mirror --port=8080 --user=mirror --wd=/home/mirror
+# mkdir /home/mirror
+# chown mirror /home/mirror
+```
+
 **Instructions for Ubuntu:**
 
 ([from @vvzvlad](https://gist.github.com/pg83/4bdb11a2ca3602d949db26b4b2a66781?permalink_comment_id=4687160#:~:text=Commands%20for%20debian,cron.d/ix_recache))
