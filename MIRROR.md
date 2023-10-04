@@ -22,7 +22,7 @@ git pull
 ./ix recache ~/some/dir
 ```
 
-**Instructions for stal/IX
+**Instructions for stal/IX**
 
 ```
 # ix mut system bin/ix/mirror --port=8080 --user=mirror --wd=/home/mirror
