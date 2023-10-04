@@ -15,6 +15,7 @@
 [Design](STALIX.md)<br>
 [Support](https://t.me/stal_ix)<br>
 [Download](https://github.com/stal-ix/ix)<br>
+[Add a mirror](MIRROR.md)<br>
 [Install instructions](INSTALL.md)
 
 #### We are pleased to [officially announce](RELEASE.md) the alpha release of stal/IX!
