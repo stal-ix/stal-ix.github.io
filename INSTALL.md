@@ -17,7 +17,7 @@ Install the tools:
 
 ```shell
 test -f /usr/bin/parted || yum install parted || apt-get install parted
-test -f /usr/bin/g++ || yum install g++ || apt-get install g++
+test -f /usr/bin/g++ || yum install clang lld || yum install g++ || apt-get install g++ # gcc >= 13 can not boostrap IX right now, so we prefer clang where available
 test -f /usr/bin/git || yum install git || apt-get install git
 ```
 
