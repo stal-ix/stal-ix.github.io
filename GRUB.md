@@ -1,7 +1,7 @@
 Этот текст предполагает, что вы знаете, что такое GRUB, для чего он нужен, и примерно представляете, как загружается компьютер.
 
 (1) https://wiki.archlinux.org/title/GRUB<br>
-(2) https://wiki.archlinux.org/title/EFI_system_partition
+(2) https://wiki.archlinux.org/title/EFI_system_partition<br>
 (3) https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface<br>
 
 Станем root:
