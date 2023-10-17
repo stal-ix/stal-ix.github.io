@@ -139,6 +139,7 @@ Try logging in from tty1.
 
 What next: 
 
+[bootloader](GRUB.md)<br>
 [setup wifi](WIFI.md)<br>
 [some quirks](CAVEATS.md)<br>
 [system configuration](ETC.md)
