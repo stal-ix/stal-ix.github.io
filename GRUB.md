@@ -28,5 +28,13 @@ $ sudo sh
 
 Установим загрузчик:
 ```
+# grub-install --target=x86_64-efi --efi-directory=/esp --bootloader-id=GRUB
 ```
-Установим GRUB:
+
+Настроим GRUB так, чтобы он автоматически находил все ядра, которые вы установили в system realm:
+```
+# cat << EOF > /boot/grub/grub.conf
+configfile /etc/grub.cfg
+EOF
+# ix mut system bin/kernel/gengrub
+```
