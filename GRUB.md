@@ -1,41 +1,44 @@
-Этот текст предполагает, что вы знаете, что такое GRUB, для чего он нужен, и примерно представляете, как загружается компьютер.
+# GRUB
+
+This text assumes that you know what GRUB is, what it is used for, and have a general understanding of how a computer boots up.
 
 (1) https://wiki.archlinux.org/title/GRUB<br>
 (2) https://wiki.archlinux.org/title/EFI_system_partition<br>
 (3) https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface<br>
 
-Станем root:
+Become root:
 ```
 $ sudo sh
 ```
 
-Примонтируем псевдо fs c efi переменными: 
+Mount the pseudo FS with EFI variables: 
 ```
 # mount -t efivarfs efivarfs /sys/firmware/efi/efivars
 ```
 
-Если на этой стадии случилась ошибка - вам нужно загрузиться с внешнего media в uefi режиме.
+If an error occurs at this stage, you need to boot from external media in UEFI mode.
 
-Примонтируем EFI partition (если ее нет, то процесс ее создания хорошо описан в (2)):
+Mount the EFI partition (if it does not exist, the process of creating it is well described in (2)):
 ```
 # mkdir -p /esp
 # mount {{your_efi_partition}} /esp
 ```
 
-Установим нужные инструменты:
+Install necessary tools:
 ```
 # ix mut set/boot/efi
 ```
 
-Установим загрузчик:
+Install the bootloader:
 ```
 # grub-install --target=x86_64-efi --efi-directory=/esp --bootloader-id=GRUB
 ```
 
-Настроим GRUB так, чтобы он автоматически находил все ядра, которые вы установили в system realm:
+Configure GRUB to automatically detect all kernels installed in the system realm:
 ```
 # cat << EOF > /boot/grub/grub.conf
 configfile /etc/grub.cfg
 EOF
 # ix mut system bin/kernel/gengrub
 ```
+
