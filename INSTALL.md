@@ -53,7 +53,7 @@ ln -s /mnt/ix/ix /ix
 Add a user "**ix**" who will own all packages in the system (note: UID 1000 is important):
 
 ```shell
-useradd -u 1000 ix
+useradd -ou 1000 ix
 ```
 
 Prepare a managed dir owned by user **ix**, in /ix, /ix/realm, etc:
