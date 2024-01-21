@@ -10,6 +10,8 @@
 * first class cross-compilation
 * no(almost) binary seeds, only compiler and dash
 
+stal/IX 2.0: Rust in a completely static environment 
+
 [Why](CASES.md)<br>
 [Blog](https://medium.com/@anton_samokhvalov)<br>
 [Design](STALIX.md)<br>
