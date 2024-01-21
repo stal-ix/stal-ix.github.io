@@ -9,7 +9,6 @@
 * pure builds if possible
 * first class cross-compilation
 * no(almost) binary seeds, only compiler and dash
-* **NEW!** Rust in a completely static environment
 
 [Why](CASES.md)<br>
 [Blog](https://medium.com/@anton_samokhvalov)<br>
@@ -18,5 +17,7 @@
 [Download](https://github.com/stal-ix/ix)<br>
 [Add a mirror](MIRROR.md)<br>
 [Install instructions](INSTALL.md)
+
+#### stal/IX 2.0: Rust in a completely static environment 
 
 #### We are pleased to [officially announce](RELEASE.md) the alpha release of stal/IX!
