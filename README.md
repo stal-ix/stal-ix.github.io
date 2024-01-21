@@ -18,4 +18,6 @@
 [Add a mirror](MIRROR.md)<br>
 [Install instructions](INSTALL.md)
 
+----------
+#### stal/IX 2.0: Rust in a completely static environment 
 #### We are pleased to [officially announce](RELEASE.md) the alpha release of stal/IX!
