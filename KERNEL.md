@@ -56,19 +56,20 @@ ix# mkdir kernel
 ix# cd kernel
 
 # get current linux kernel source
-ix# cat $(dirname $(which ix))/pkgs/bin/kernel/6/0/t/ver.sh
-https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.12.tar.xz
-sha:89b730edf8942b49e02f9894244205886c9a214d629b35b88c4ff06ee9304f01
+ix# cat $(dirname $(which ix))/pkgs/bin/kernel/kernels.json | grep https
+...
+        "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.1.tar.xz",
+...
 
-ix# wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.12.tar.xz
-ix# tar xf linux-6.0.12.tar.xz
-ix# cd linux-6.0.12
+ix# wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.1.tar.xz
+ix# tar xf linux-6.7.1.tar.xz
+ix# cd linux-6.7.1
 ```
 
 Copy old kernel config to our tree:
 
 ```shell
-ix# cp $(dirname $(which ix))/pkgs/bin/kernel/6/0/slot/1/cfg ./.config
+ix# cp $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_6_0 ./.config
 ```
 
 Run the kernel configurator:
@@ -94,8 +95,8 @@ Alternatively, you can combine previous commands into one:
 
 ```shell
 ...
-ix# cd linux-6.0.12
-ix# ix tool reconf $(dirname $(which ix))/pkgs/bin/kernel/6/0/slot/1/cfg
+ix# cd linux-6.7.1
+ix# ix tool reconf $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_6_0
 ```
 
 Mostly, to understand what needs to be included in the kernel config for a particular device operation, it helps to search the Internet with the module's name and a link to Gentoo/Arch as they have the largest knowledge base on the subject:
@@ -105,15 +106,15 @@ Mostly, to understand what needs to be included in the kernel config for a parti
 After the kernel is configured, copy the modified config to the base:
 
 ```shell
-ix# cp .config $(dirname $(which ix))/pkgs/bin/kernel/6/0/slot/1/cfg
+ix# cp .config $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_6_0
 ```
 
 After that, you can add the kernel to the system realm in the usual way:
 
 ```shell
-ix# ix mut system bin/kernel/6/0/slot/1
+ix# ix mut system bin/kernel/6/7
 ix# ls /bin/kernel-*
-/bin/kernel-6-0-12-slot0
+/bin/kernel-6-7-1...
 ```
 
 Remember that path, you will need it later, in GRUB cli or in grub.cfg.
@@ -121,9 +122,9 @@ Remember that path, you will need it later, in GRUB cli or in grub.cfg.
 Alternatively, you can use a separate realm for the bootstrap kernel:
 
 ```shell
-ix# ix mut kernel bin/kernel/6/0/slot/1
+ix# ix mut kernel bin/kernel/6/7
 ix# ls /ix/realm/kernel/bin/kernel-*
-/ix/realm/kernel/bin/kernel-6-0-12-slot0
+/ix/realm/kernel/bin/kernel-6-7-1-slot0
 ```
 
 Remember that path, you will need it later, in GRUB cli or in grub.cfg.
