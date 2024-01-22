@@ -15,6 +15,8 @@ Also you can use any suitable kernel for your hardware, with:
 * cgroupsv2
 * all usual pseudo fs, like proc, debugfs, sysfs, devptsfs, tmpfs
 * zram
+* statically linked
+* and with built in firmware
 
 ---
 
