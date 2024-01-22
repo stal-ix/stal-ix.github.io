@@ -25,7 +25,7 @@ test -f /usr/bin/git || yum install git || apt-get install git
 For general instructions on disk partitioning, refer to<br>
 https://wiki.archlinux.org/title/installation_guide#Partition_the_disks.<br>
 
-Prepare XFS on /dev/xxx using parted, mkfs.xfs, and mount it:
+Prepare EXT4 on /dev/xxx using parted, mkfs.ext4, and mount it:
 
 ```shell
 mkdir /mnt/ix
