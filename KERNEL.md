@@ -8,6 +8,14 @@
 **_Disclaimer:_**<br>
 *This guide is not for the faint of heart! It assumes that you have an idea of what a statically linked kernel is and know how to build it for your hardware in some source-based distro.*
 
+Also you can use any suitable kernel for your hardware, with:
+
+* MGLRU enabled
+* transparent huge pages enabled
+* cgroupsv2
+* all usual pseudo fs, like proc, debugfs, sysfs, devptsfs, tmpfs
+* zram
+
 ---
 
 This guide implies ix package manager in your PATH:
