@@ -90,7 +90,7 @@ To make this setting happen automatically, in the first line of your session scr
 To start using **IX** clone it from github.
 
 ```shell
-ix# git clone git@github.com:stal-ix/ix.git
+ix# git clone https://github.com/stal-ix/ix
 ix# export PATH=${PWD}/ix:${PATH}
 ```
 
