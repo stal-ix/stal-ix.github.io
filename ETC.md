@@ -31,6 +31,21 @@ mkdir /home/{{username}}
 chown {{username}} /home/{{username}}
 ```
 
+And add sudo thereafter:
+
+```shell
+# from new user we create new RSA key pair
+user$ export PATH=/ix/realm/boot/bin:$PATH # add path to bootstrapped ssh-add
+user$ ssh-keygen -t rsa
+...
+```
+
+```shell
+# from root, cause only root can add new superusers
+# assume ix in PATH, add newly crafted RSA public key
+root# ix mut system etc/user/0 --pubkey="$(cat /home/{{username}}/.ssh/id_rsa.pub)"
+```
+
 ## Activate zram0
 
 ```shell
