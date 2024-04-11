@@ -139,6 +139,12 @@ Try logging in from tty1.
 
 What next: 
 
+Add some uniqueness into system, without this some packages refuse to install:
+
+```shell
+./ix mut system --seed="$(cat /dev/random | head -c 1000 | base64)"
+```
+
 [bootloader](GRUB.md)<br>
 [setup wifi](WIFI.md)<br>
 [some quirks](CAVEATS.md)<br>
