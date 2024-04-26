@@ -75,6 +75,12 @@ The system uses UTC time by default. There is currently no global timezone setti
 export TZ=Europe/Moscow
 ```
 
+## Change sndio's alsa device
+
+```shell
+ix# ix mut system --alsa_device=hw:1
+```
+
 ## Setup 3D driver
 [ACCEL.md](ACCEL.md)
 
