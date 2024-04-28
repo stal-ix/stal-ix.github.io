@@ -30,3 +30,5 @@ https://github.com/pg83/ix/blob/main/pkgs/lib/gtk/4/env/ix.sh
 ```
 exec user-session
 ```
+
+По умолчанию, `user-session` передает управление в ${HOME}/.session, который тоже является точкой настройки. В нем вы можете запустить сессионные программы, типа ssh-agent, и запустить используемый вами wayland compositor.
