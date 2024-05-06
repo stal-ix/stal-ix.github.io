@@ -1,34 +1,39 @@
-Предупреждение: все, что тут описано, является moving target, и subject to change.
+# Login
 
-Предполагается, что для каждого пользователя ${USER}, существует realm ${USER}, лежащий по пути /ix/realm/${USER}. Так же предполагается, что в этом realm лежат все программы, нужные для работы и логина в систему. Пример того, что может лежать в пользовательском realm: https://github.com/stal-ix/ix/blob/main/pkgs/set/pg/ix.sh
+> Warning: everything described here is a moving target and subject to change.
 
-Для всех пользователей, для которых разрешен login, в качестве shell выставлен скрипт /bin/session:
+It is assumed that for each user ${USER}, there is a realm ${USER}, located at /ix/realm/${USER}.<br> 
+It is also assumed that this realm contains all the programs necessary for work and logging into the system.<br> 
+
+An example of what may be found in a user realm: https://github.com/stal-ix/ix/blob/main/pkgs/set/pg/ix.sh.
+
+For all users allowed to login, the /bin/session script is set as the shell:
 
 ```
 pg# cat /etc/passwd  | grep sess
 pg:redacted:10000:10000:none:/home/pg:/bin/session
 ```
 
-Этот скрипт настраивает пользовательское окружение, некоторые переменные среды, создает временные папки для пользователя, и прочее:
+This script configures the user environment, some environment variables, creates temporary folders for the user, etc.:
 
 https://github.com/stal-ix/ix/blob/main/pkgs/bin/session/scripts/session
 
-Так же этот скрипт экспортирует настройки окружения из пользовательского realm:
+This script also exports environment settings from the user realm:
 
 ```
 . /ix/realm/${USER}/etc/env
 ```
 
-Некоторые программы могут настраивать нужное окружение для своей работоспособности, когда устанавливаются в пользовательский realm:
+Some programs may configure the necessary environment for their functionality when installed in the user realm:
 
 https://github.com/pg83/ix/blob/main/pkgs/lib/gtk/4/env/ix.sh
 
-(поэтому, если вы хотите использовать другую схему для login, то вам нужно убедиться в том, что этот файл читается в процессе логина)
+(therefore, if you want to use a different login scheme, you need to ensure that this file is read during the login process)
 
-Далее скрипт передает управление в `user-session`, и это место является точкой настройки, то есть, вы можете заменить этот скрипт на свой.
+Then, the script passes control to user-session, which is the configuration point, meaning you can replace this script with your own.
 
 ```
 exec user-session
 ```
 
-По умолчанию, `user-session` передает управление в ${HOME}/.session, который тоже является точкой настройки. В нем вы можете запустить сессионные программы, типа ssh-agent, и запустить используемый вами wayland compositor.
+By default, `user-session` passes control to ${HOME}/.session, which is also a configuration point. Here you can start session programs like ssh-agent and launch the Wayland compositor you are using.
