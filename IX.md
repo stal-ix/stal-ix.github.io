@@ -4,7 +4,7 @@
 > [FS.md](FS.md)<br>
 
 
-**IX** package manager can be used standalone on any supported OS, or as a base package manager on Linux **stal/IX** distribution.
+**IX** package manager can be used [standalone on any supported OS](IX_standalone.md), or as a base package manager on Linux **stal/IX** distribution.
 
 This document describes the **IX** usage as part of **stal/IX**.
 

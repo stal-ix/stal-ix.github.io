@@ -148,7 +148,8 @@ Add some uniqueness into system, without this some packages refuse to install:
 [bootloader](GRUB.md)<br>
 [setup wifi](WIFI.md)<br>
 [some quirks](CAVEATS.md)<br>
-[system configuration](ETC.md)
+[system configuration](ETC.md)<br>
+[user login](LOGIN.md)
 
 <!-- {% endraw %} -->
 

@@ -16,7 +16,9 @@
 [Support](https://t.me/stal_ix)<br>
 [Download](https://github.com/stal-ix/ix)<br>
 [Add a mirror](MIRROR.md)<br>
-[Install instructions](INSTALL.md)
+[Install instructions](INSTALL.md)<br>
+[Packaging guide](PKG.md)<br>
+[Documentation style guide](GUIDE.md)
 
 ----------
 #### stal/IX 2.0: Rust in a [completely static environment](https://t.me/stal_ix/294) 
