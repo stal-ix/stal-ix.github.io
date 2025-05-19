@@ -1,12 +1,12 @@
 # stal/IX Filesystem
 
 
-> This document describes the **stal/IX** file system layout.
+> This document describes the structure of the **stal/IX** filesystem.
 
 <!-- {% raw %} -->
 
-The /ix/store/ contains a folders set, each package corresponds to one folder.<br>
-Folders form a content addressable store, that is, all paths uniquely identify a unique package.
+/ix/store/ contains a set of folders, each package corresponding to one folder.<br>
+The folders form a content-addressable store, i.e. all paths uniquely identify a unique package.
 
 ```shell
 pg-> ls -la /ix/store/ | head -n 10
@@ -35,13 +35,13 @@ lrwxrwxrwx    1 pg       10000           33 Dec 11 16:46 pg -> /ix/store/w5qTNK0
 lrwxrwxrwx    1 pg       10000           37 Dec 11 06:08 system -> /ix/store/oQfJCY3xa3jlPkNf-rlm-system
 ```
 
-Actually, these are "roots" by which the **IX** package manager can understand what is actively used in /ix/store/ and what can be safely removed using the `ix gc` command.
+In fact, these are the "roots" that the **IX** package manager can use to figure out what is actively used in /ix/store/ and what can be safely removed using the `ix gc` command.
 
 Some realms are predefined:
 
-/ix/realm/system - the "system" realm, it contains code needed to boot the OS.
+/ix/realm/system - the "system" realm, contains the code necessary to boot the OS.
 
-Root folders /etc, /bin look at the system realm:
+The root folders /etc, /bin look at the system realm:
 
 ```shell
 pg-> ls -la /bin /etc
@@ -49,18 +49,18 @@ lrwxrwxrwx    1 root     root            20 May 22  2022 /bin -> /ix/realm/syste
 lrwxrwxrwx    1 root     root            20 May 22  2022 /etc -> /ix/realm/system/etc
 ```
 
-By the way, this is why there's no point in editing files in /etc, they'll be updated with any update of /ix/realm/system.
+By the way, this is why there is no point in editing files in /etc, they will be updated with any update of /ix/realm/system.
 
-For every user in the system with name USER, there is a realm /ix/realm/USER, that belongs to that user:
+For each user on the system named USER, there is a realm /ix/realm/USER that belongs to that user:
 
-* it's default when using ix mut: `ix mut bin/nano` will install nano in your personal realm.
-* it comes first in PATH:
+* It is the default when using `ix mut`: `ix mut bin/nano` will install nano in your personal realm.
+* It comes first in PATH:
 
 ```shell
 pg-> echo ${PATH}
 /ix/realm/pg/bin:/bin
 ```
 
-To make it work, your session manager must do `. /etc/session`
+For this to work, your session manager must do `. /etc/session`.
 
 <!-- {% endraw %} -->

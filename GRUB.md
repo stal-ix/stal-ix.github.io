@@ -2,16 +2,18 @@
 
 This text assumes that you know what GRUB is, what it is used for, and have a general understanding of how a computer boots up.
 
-(1) https://wiki.archlinux.org/title/GRUB<br>
-(2) https://wiki.archlinux.org/title/EFI_system_partition<br>
-(3) https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface<br>
+(1) [https://wiki.archlinux.org/title/GRUB](https://wiki.archlinux.org/title/GRUB)<br>
+(2) [https://wiki.archlinux.org/title/EFI_system_partition](https://wiki.archlinux.org/title/EFI_system_partition)<br>
+(3) [https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface)<br>
 
-Become root:
+Become root user:
 ```
 $ sudo sh
 ```
 
-Mount the pseudo FS with EFI variables: 
+Mount the pseudo filesystem with EFI variables:
+
+
 ```
 # mount -t efivarfs efivarfs /sys/firmware/efi/efivars
 ```
@@ -24,7 +26,7 @@ Mount the EFI partition (if it does not exist, the process of creating it is wel
 # mount {{your_efi_partition}} /esp
 ```
 
-Install necessary tools:
+Install the necessary tools:
 ```
 # ix mut set/boot/efi
 ```

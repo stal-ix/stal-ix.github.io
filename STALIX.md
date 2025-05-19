@@ -1,7 +1,7 @@
 # stal/IX
 
 
-This document contains a regularly replenishing list of **stal/IX** and conventional Linux differences.
+This document contains a regularly updated list of differences between **stal/IX** and regular Linux.
 
 ## Minimalism
 
@@ -11,9 +11,9 @@ This document contains a regularly replenishing list of **stal/IX** and conventi
 
 **stal/IX** is not UNIX or Linux in the usual sense of these terms.
 
-**stal/IX** - an attempt to rethink some fundamentals without touching Linux API and ABI.
+**stal/IX** is an attempt to rethink some fundamentals without touching the Linux API and ABI.
 
-One of the **stal/IX** goals - from the very beginning to build the system in such a way that it’s possible to understand how it works, and not only use it conveniently.
+One of the goals of **stal/IX** is to build the system from the ground up in such a way that it is easy to understand how it works, not just easy to use.
 
 [https://wiki.musl-libc.org/alternatives.html](https://wiki.musl-libc.org/alternatives.html)<br>
 [https://github.com/illiliti/libudev-zero](https://github.com/illiliti/libudev-zero)<br>
@@ -25,14 +25,14 @@ One of the **stal/IX** goals - from the very beginning to build the system in su
 [https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)<br>
 [FS.md](FS.md) 
 
-Overall, the file system will be familiar to those who know Nix/Guix. Atomic updates, multi-versioning - all here!
+In general, the file system will be familiar to those who know Nix/Guix. Atomic updates, multiversioning - it's all here!
 
 ## No systemd
 
 [https://blog.darknedgy.net/technology/2020/05/02/0/](https://blog.darknedgy.net/technology/2020/05/02/0/)<br>
 [https://www.phoronix.com/news/systemd-Git-Stats-2022](https://www.phoronix.com/news/systemd-Git-Stats-2022)
 
-**stal/IX** currently uses runit as the most lightweight solution, perhaps, this will change in the future.
+Currently, **stal/IX** uses a custom init as the most lightweight solution. It formerly used runit, but it was too hard with the content-addressable store.
 
 ## Musl
 
@@ -41,19 +41,19 @@ Overall, the file system will be familiar to those who know Nix/Guix. Atomic upd
 [https://www.phoronix.com/news/Glibc-2.36-EAC-Problems](https://www.phoronix.com/news/Glibc-2.36-EAC-Problems)
 [https://ariadne.space/2021/12/29/glibc-is-still-not-y2038-compliant-by-default/](https://ariadne.space/2021/12/29/glibc-is-still-not-y2038-compliant-by-default/)
 
-Glibc does not fully support static linking. **stal/IX** uses musl for internal needs, and allows to build custom soft with an arbitrary libc on a choice.
+Glibc does not fully support static linking. **stal/IX** uses musl internally and allows userland software to be built with an arbitrary libc of choice.
 
 ## Non-root package management
 
 [IX.md](IX.md) 
 
-All files on the system are IX user-owned, and all package management is done on his behalf.
+All files on the system are owned by user IX, and all package management is performed on its behalf.
 
-Consequence - there is not a single suid binary on the system. Sudo - the thin layer over local ssh daemon, for privilege escalation.
+Consequently, there is not a single suid binary file in the system. Sudo is a thin layer over the local ssh daemon, to increase privileges.
 
 ## Fully supervised process tree
 
-Every process different from init has a parent different from init. All processes that fail to meet this requirement are killed by a specially dedicated background process. To manage services used runit, encouraging this behavior.
+Every process other than init has a parent other than init. All processes that do not meet this requirement are terminated by a specially designated background process. A custom init is used to manage services, encouraging this behavior.
 
 [https://github.com/swaywm/sway/issues/6828](https://github.com/swaywm/sway/issues/6828)<br>
 [https://github.com/stal-ix/ix/blob/main/pkgs/bin/sched/staleprocs/staleprocs.sh](https://github.com/stal-ix/ix/blob/main/pkgs/bin/sched/staleprocs/staleprocs.sh)<br>
@@ -75,26 +75,27 @@ No ld.so!
 
 [https://drewdevault.com/2021/02/02/Anti-Wayland-horseshit.html](https://drewdevault.com/2021/02/02/Anti-Wayland-horseshit.html)
 
-X is dying, and to maintain the efficiency of the IX package base running with X means doing work that one day will have to be thrown out. We don’t have enough resources for that.
+X is dying, and to keep the IX package base efficient, working on X means doing work that will one day have to be thrown away. We don't have enough resources to do that.
 
 ## Login shell
 
 No<br>
 [https://askubuntu.com/questions/866161/setting-path-variable-in-etc-environment-vs-profile](https://askubuntu.com/questions/866161/setting-path-variable-in-etc-environment-vs-profile)
 
-Every user session must start from the login shell, even in ssh daemon.
+Every user session must start from the login shell, even in the ssh daemon.
 
-[Patch for dropbear](https://github.com/stal-ix/ix/blob/main/pkgs/bin/dropbear/ix.sh#L7) to launch all processes, including non-interactive ones, with login shell.
+[Patch for dropbear](https://github.com/stal-ix/ix/blob/main/pkgs/bin/dropbear/ix.sh#L7) to launch all processes, including non-interactive ones, with a login shell.
 
-## Cross-compile by default
+## Cross-compilation by default
 
-All packages are compiled as if host platform != target platform, thus, we achieve that the package base is built for all platforms most of the time. We have a cross-compiling CI for aarch64 and riscv!
+All packages are compiled as if host platform != target platform, so we achieve that the package base is built for all platforms most of the time. We have cross-compiling CI for aarch64 and riscv!
 
 ## File associations
 
-The existing mechanisms for associating programs to file types are complex, fragile, and difficult to integrate into IX realms. https://wiki.archlinux.org/title/XDG_MIME_Applications
+Existing mechanisms for associating programs with file types are complex, fragile, and difficult to integrate into IX realms.<br>
+[https://wiki.archlinux.org/title/XDG_MIME_Applications](https://wiki.archlinux.org/title/XDG_MIME_Applications)
 
-Therefore, stal/IX has its own mechanism for linking programs to file types. It is based on the [xdg-open-dispatch](https://github.com/stal-ix/ix/blob/main/pkgs/bin/xdg/open/scripts/xdg-open-dispatch) script, and changes in upstream to redirect their mechanisms to xdg-open, patch for [epiphany WEB browser](https://github.com/stal-ix/ix/blob/main/pkgs/bin/epiphany/4/ix.sh#L32). 
+Therefore stal/IX has its own mechanism for associating programs with file types. It is based on the [xdg-open-dispatch](https://github.com/stal-ix/ix/blob/main/pkgs/bin/xdg/open/scripts/xdg-open-dispatch) script, and changes in upstream to redirect their mechanisms to xdg-open, such as a patch for the [Epiphany web browser](https://github.com/stal-ix/ix/blob/main/pkgs/bin/epiphany/4/ix.sh#L32). 
 
 [Interaction with upstream](UPSTREAM.md)
 
