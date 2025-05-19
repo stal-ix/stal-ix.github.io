@@ -22,5 +22,6 @@
 [Website license](LICENSE.md)
 
 ----------
+#### 2025-05-19: A new stal/IX website is under construction, which will have better navigation. It will be made available in a couple of months.
 #### stal/IX 2.0: Rust in a [completely static environment](https://t.me/stal_ix/294) 
 #### We are pleased to [officially announce](RELEASE.md) the release of the alpha version of stal/IX!
