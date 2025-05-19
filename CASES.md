@@ -4,9 +4,9 @@
 
 <!-- {% raw %} -->
 
-**IX** renders obsolete many different ways to compile statically linked binaries:
+**IX** obsoletes many ways of compiling statically linked binaries:
 
-[buildroot](https://buildroot.org/)
+[Buildroot](https://buildroot.org/)
 
 ```shell
 ix# ix build --target=linux-aarch64 --for_target=linux-riscv64 bin/gcc bin/binutils
@@ -18,22 +18,22 @@ ix# ix build --target=linux-aarch64 --for_target=linux-riscv64 bin/gcc bin/binut
 ix# ix build --target=linux-aarch64 bin/clang/16
 ```
 
-[busybox](https://www.busybox.net/downloads/binaries/)
+[BusyBox](https://www.busybox.net/downloads/binaries/)
 
 ```shell
 ix# ix build --target=linux-aarch64 --purec=musl/pure bin/busybox/ix
 ix# ix build --target=linux-aarch64 --purec=uclibc/ng bin/busybox/ix
 ```
 
-[static tmux](https://github.com/mjakob-gh/build-static-tmux)<br>
-[another static tmux](https://github.com/maciejjo/static-tmux)<br>
-[and how to build one!](https://stackoverflow.com/questions/62620514/building-static-executable-tmux-on-linux)
+[Static tmux](https://github.com/mjakob-gh/build-static-tmux)<br>
+[Another static tmux](https://github.com/maciejjo/static-tmux)<br>
+[and how to build it!](https://stackoverflow.com/questions/62620514/building-static-executable-tmux-on-linux)
 
 ```shell
 ix# ix build bin/tmux
 ```
 
-[how to build static git](https://stackoverflow.com/questions/11570188/how-to-build-git-with-static-linking)<br>
+[How to build static Git](https://stackoverflow.com/questions/11570188/how-to-build-git-with-static-linking)<br>
 [again](https://github.com/EXALAB/git-static)<br>
 [and again...](https://gist.github.com/mishudark/3080857)
 

@@ -1,26 +1,27 @@
 # Kernel
 
-> Prereq:<br>
+> Prerequisites:<br>
 > [FS.md](FS.md)<br>
 > [IX.md](IX.md)<br>
 
-
 **_Disclaimer:_**<br>
-*This guide is not for the faint of heart! It assumes that you have an idea of what a statically linked kernel is and know how to build it for your hardware in some source-based distro.*
+*This guide is not for the faint of heart! It assumes that you have some idea of ​​what a statically linked kernel is, and how to build one for your hardware in a source-based distribution.*
 
-Also you can use any suitable kernel for your hardware, with:
+*This page was last updated on January 22, 2024 (as of May 19, 2025) and may not be up to date (e.g., pkgs/bin/kernel/kernels.json was removed on [January 27, 2024](https://github.com/stal-ix/ix/commit/e167fc600108b4874887e708a09b229765445206)).*
 
-* MGLRU enabled
-* transparent huge pages enabled
-* cgroupsv2
-* all usual pseudo fs, like proc, debugfs, sysfs, devptsfs, tmpfs
-* zram
-* statically linked
-* and with built in firmware
+Also you can use any suitable kernel for your hardware that:
+
+* has MGLRU enabled
+* has transparent huge pages enabled
+* has cgroupsv2
+* has all the usual pseudo filesystems like proc, debugfs, sysfs, devptsfs, tmpfs
+* has zram
+* is statically linked
+* and has firmware built-in
 
 ---
 
-This guide implies ix package manager in your PATH:
+This guide assumes that the IX package manager is in your PATH:
 
 ```shell
 ix# export PATH=/mnt/ix/home/ix/ix:${PATH}   # assumes we are in stal/IX installer, before reboot
@@ -30,12 +31,12 @@ ix# ix list
 ```
 ---
 
-The guide intends to build a kernel that contains all the components necessary for operation.
+The goal of this guide is to build a kernel that contains all the components needed to run it.
 
-First, you need to know the list of modules for your hardware support.
+First, you need to know the list of modules that your hardware supports.
 
-You can download some conventional distro with a working hardware auto-detection system to do this.<br>
-It needs to execute:
+To do this, you can download any regular distribution with a working automatic hardware detection system.<br>
+You need to do the following:
 
 ```shell
 ubuntu# lspci -k
@@ -57,9 +58,9 @@ ubuntu# lspci -k
 ...
 ```
 
-The last column - a list of modules that we need. Write them down.
+The last column is a list of modules we need. Write them down.
 
-Next, we need to prepare a directory with kernel sources for which we are building a config. Let's say we want to use kernel 6.0:
+Next, we need to prepare a directory with the kernel sources for which we are building a config. Let's say we want to use kernel 6.0:
 
 ```shell
 ix# mkdir kernel
@@ -76,7 +77,7 @@ ix# tar xf linux-6.7.1.tar.xz
 ix# cd linux-6.7.1
 ```
 
-Copy old kernel config to our tree:
+Let's copy the old kernel configuration into our tree:
 
 ```shell
 ix# cp $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_6_0 ./.config
@@ -88,20 +89,20 @@ Run the kernel configurator:
 ix run set/menuconfig -- make HOSTCC=cc menuconfig
 ```
 
-You need to find all the modules from the list above in the configurator (it has a search!) and add them to the configuration.
+You need to find all the modules from the list above in the configurator (there is a search!) and add them to the configuration.
 
 ---
-Herewith:
+That being said:
 
  * Don't forget to add all the necessary buses for your devices (USB, I2C, PCIe, NVMe, etc.).
- * Some drivers require firmware. They'll need to be added to ix.sh for your kernel, as done here: [https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9](https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9).<br>
-  *Pro tip:* run `dmesg | grep firmware` on running system for information about missing firmware!
- * Read how to build a kernel generally in a source-based distro - [https://wiki.gentoo.org/wiki/Kernel/Configuration](https://wiki.gentoo.org/wiki/Kernel/Configuration).
- * Don't forget to add cgroup, user namespaces, network namespaces support for your kernel!
+ * Some drivers require firmware. They'll need to be added to ix.sh for your kernel, as done here: [https://github.com/stal-ix/ix/blob/0b454258670ba4a4bc3fba6d416801d55c73467d/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9](https://github.com/stal-ix/ix/blob/0b454258670ba4a4bc3fba6d416801d55c73467d/pkgs/bin/kernel/6/0/slot/vbox/ix.sh#L9).<br>
+  *Pro tip:* Run `dmesg | grep firmware` on a running system to get information about the missing firmware!
+ * Read how to build a kernel in general in a source-based distribution - [https://wiki.gentoo.org/wiki/Kernel/Configuration](https://wiki.gentoo.org/wiki/Kernel/Configuration).
+ * Don't forget to add support for cgroups, user namespaces, network namespaces to your kernel!
 
 ---
 
-Alternatively, you can combine previous commands into one:
+Alternatively, you can combine the previous commands into one:
 
 ```shell
 ...
@@ -109,11 +110,11 @@ ix# cd linux-6.7.1
 ix# ix tool reconf $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_6_0
 ```
 
-Mostly, to understand what needs to be included in the kernel config for a particular device operation, it helps to search the Internet with the module's name and a link to Gentoo/Arch as they have the largest knowledge base on the subject:
+Most often, to understand what needs to be included in the kernel configuration for a particular device operation, it is useful to search the web for the module name and the Gentoo/Arch link, as they have the largest knowledge base on the topic:
 
  * Here, for example, is a list of what needs to be done to get AMD GPU support operating - [https://wiki.gentoo.org/wiki/AMDGPU](https://wiki.gentoo.org/wiki/AMDGPU).
 
-After the kernel is configured, copy the modified config to the base:
+After configuring the kernel, copy the modified configuration to the base:
 
 ```shell
 ix# cp .config $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_6_0
@@ -127,7 +128,7 @@ ix# ls /bin/kernel-*
 /bin/kernel-6-7-1...
 ```
 
-Remember that path, you will need it later, in GRUB cli or in grub.cfg.
+Remember that path, you will need it later in GRUB CLI or in grub.cfg.
 
 Alternatively, you can use a separate realm for the bootstrap kernel:
 
@@ -137,4 +138,4 @@ ix# ls /ix/realm/kernel/bin/kernel-*
 /ix/realm/kernel/bin/kernel-6-7-1-slot0
 ```
 
-Remember that path, you will need it later, in GRUB cli or in grub.cfg.
+Remember that path, you will need it later in GRUB CLI or in grub.cfg.

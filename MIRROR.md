@@ -2,13 +2,13 @@
 
 **List of source mirrors used to build stal/IX:**
 
-https://github.com/pg83/ix/blob/main/pkgs/die/scripts/mirrors.txt
+[https://github.com/pg83/ix/blob/main/pkgs/die/scripts/mirrors.txt](https://github.com/pg83/ix/blob/main/pkgs/die/scripts/mirrors.txt)
 
-You can help the project by hosting such a mirror and making it available to the world!
+You can help the project by hosting such a mirror and making it available to the whole world!
 
-The structure of the mirror is very simple - it is a single-level list of files, and the name of each file is sha256sum of the data contained in this file.
+The structure of the mirror is very simple - it is a single-level list of files, and the name of each file is the SHA-256 sum of the data contained in that file.
 
-So, for example, you can copy all the contents of one of the mirrors and make a copy available on the Internet.
+For example, you can copy the entire contents of one of the mirrors and make the copy available on the Internet.
 
 Or you can run a ready-made script in cron, for example, once an hour:
 
@@ -34,7 +34,7 @@ git pull
 
 ([from @vvzvlad](https://gist.github.com/pg83/4bdb11a2ca3602d949db26b4b2a66781?permalink_comment_id=4687160#:~:text=Commands%20for%20debian,cron.d/ix_recache))
 
-Commands for debian vm (root user):
+Commands for Debian VM (root user):
 
 ```
 apt install make git python3 wget git nginx -y
@@ -51,5 +51,4 @@ echo '/root/ix/ix recache /var/www/html/ >> "$log_file" 2>&1' >> /root/ix_recach
 echo "0 */4 * * * /bin/sh /root/ix_recache.sh > /dev/null 2>&1" > /etc/cron.d/ix_recache
 ```
 
-**After populating the cache directory, send a PR to add the new mirror to 
-https://github.com/pg83/ix/blob/main/pkgs/die/scripts/mirrors.txt**
+**Once the cache directory is populated, submit a PR to add the new mirror at https://github.com/pg83/ix/blob/main/pkgs/die/scripts/mirrors.txt**

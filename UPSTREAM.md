@@ -1,6 +1,6 @@
 ## Interaction with upstream
 
-Quite often, upstream is not interested in the ideas inherent in **stal/IX**:
+Quite often, upstream is not interested in the ideas behind **stal/IX**:
 
 * [glib developers actively hinder static linking with glib](https://bugzilla.gnome.org/show_bug.cgi?id=768215#c16);
 * [VTE developers don't care about building with musl](https://gitlab.gnome.org/GNOME/vte/-/issues/72), and [don't answer questions](https://gitlab.gnome.org/GNOME/vte/-/issues/72#note_1415630);
@@ -14,6 +14,6 @@ Quite often, upstream is not interested in the ideas inherent in **stal/IX**:
 * [by default, linux kernel eat CPU cycles on breakfast](https://www.phoronix.com/news/Linux-Default-Mitigations-Off), [we disable it by default](https://github.com/stal-ix/ix/blob/main/pkgs/bin/kernel/t/2/ix.sh#L21);
 * [custom gdk-pixbuf SVG loader, over lunasvg (instead of rsvg)](https://github.com/stal-ix/ix/blob/main/pkgs/lib/lunasvg/gdk/io.cpp).
 
-Therefore, we have to maintain a set of fixes and adjustments for upstream that will never be merged into upstream.
+So we have to maintain a set of fixes and patches for upstream that will never be merged into upstream.
 
-Project goals are more important than the arrogant behavior of some maintainers!
+The goals of the project are more important than the arrogant behavior of some maintainers!

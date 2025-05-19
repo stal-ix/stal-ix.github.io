@@ -1,20 +1,20 @@
 # IX package manager
 
-> Prereq:<br>
+> Prerequisites:<br>
 > [FS.md](FS.md)<br>
 
 
-**IX** package manager can be used [standalone on any supported OS](IX_standalone.md), or as a base package manager on Linux **stal/IX** distribution.
+The **IX** package manager can be used [standalone on any supported OS](IX_standalone.md) or as the base package manager in the **stal/IX** Linux distribution.
 
-This document describes the **IX** usage as part of **stal/IX**.
+This document describes the use of **IX** as part of **stal/IX**.
 
-The **stal/IX** on disk installing guide you can read in [INSTALL.md](INSTALL.md)
+You can read the installation guide for **stal/IX** on-disk at [INSTALL.md](INSTALL.md).
 
 ## Basic concepts
 
-*Package* - one folder contents in /ix/store directory.
+A *package* is the contents of a single folder in the /ix/store directory.
 
-Here, for example, is bzip2 package contents:
+For example, here are the contents of the bzip2 package:
 
 ```shell
 ix# find /ix/store/0GsKotnAh74LIcvO-bin-bzip2/
@@ -35,9 +35,9 @@ ix# find /ix/store/0GsKotnAh74LIcvO-bin-bzip2/
 /ix/store/0GsKotnAh74LIcvO-bin-bzip2/touch
 ```
 
-All packages form a content addressable store, substantially similar to the same structure in nixos and guix.
+All packages form a content-addressable store, essentially similar to the same structure in NixOS and Guix.
 
-*Realm* - also a package, it contains symlinks to other packages:
+A *realm* is also a package that contains symbolic links to other packages:
 
 ```shell
 ix# find /ix/store/0Q4rkMy8J8D1WTVn-rlm-system
@@ -60,7 +60,7 @@ ix# find /ix/store/0Q4rkMy8J8D1WTVn-rlm-system
 /ix/store/0Q4rkMy8J8D1WTVn-rlm-system/touch
 ```
 
-Some realms have anchor links that mark the current (used) version of some realm:
+Some realms have anchor links that mark the current (used) version of a certain realm:
 
 ```shell
 ix# ls -la /ix/realm/
@@ -73,13 +73,13 @@ lrwxrwxrwx pg -> /ix/store/QC6vXQZNfLfhT4t1-rlm-pg
 lrwxrwxrwx system -> /ix/store/PIYCjYiLy1AIxVVl-rlm-system
 ```
 
-To use the contents of some realm, just add this realm to your PATH:
+To use the contents of a realm, simply add that realm to your PATH:
 
 ```shell
 ix# export PATH="/ix/realm/boot/bin:${PATH}"
 ```
 
-To make this setting happen automatically, in the first line of your session script, do:
+To make this setting happen automatically, in the first line of your session script, add:
 
 ```shell
 . /etc/session
@@ -87,50 +87,50 @@ To make this setting happen automatically, in the first line of your session scr
 
 ## Using IX
 
-To start using **IX** clone it from github.
+To start using **IX**, clone it from GitHub.
 
 ```shell
 ix# git clone https://github.com/stal-ix/ix
 ix# export PATH=${PWD}/ix:${PATH}
 ```
 
-Any user with sudo configured can install packages on the system. Thanks to the content addressable store usage, different versions of packages will not overlap with each other. Different users may use different **IX** repository versions. The recommended way to customize the system for yourself - clone the repository on github, and make the necessary changes to your branch. Perhaps, someday there'll be support for overlays.
+Any user with sudo configured can install packages on the system. Using a content-addressable store, different versions of packages will not overlap. Different users can use different versions of the **IX** repository. The recommended way to customize the system is to clone the repository on GitHub and make the necessary changes to your branch. Perhaps someday there will be support for overlays.
 
 The basic command when using **IX** is `ix mut`.
 
-Install the sway program in realm gui:
+Install Sway in the gui realm:
 
 ```shell
 ix# ix mut gui bin/sway
 ```
 
-Install the sway program in realm gui, specifying that it should use the 3d accelerated driver for AMD GPU:
+Install Sway in the gui realm, specifying that it should use the 3D acceleration driver for AMD GPU:
 
 ```shell
 ix# ix mut gui bin/sway --mesa_driver=radv
 ```
 
-[See](ACCEL.md) also for a more detailed introduction to the subject of 3D acceleration in **stal/IX**.
+For a more detailed introduction to 3D acceleration in **stal/IX**, see [ACCEL.md](ACCEL.md).
 
-Let's say that all programs in realm gui should use AMD GPU:
+Let's assume that all programs in the gui realm should use AMD GPU:
 
 ```shell
 ix# ix mut gui --mesa_driver=radv
 ```
 
-And remove mesa_driver flag, for software 3D:
+And remove the mesa_driver flag for software 3D:
 
 ```shell
 ix# ix mut system --mesa_driver=-
 ```
 
-Add a browser to the realm gui:
+Add a browser to the gui realm:
 
 ```shell
 ix# ix mut gui bin/epiphany
 ```
 
-We are fed up with sway and want to use wayfire:
+We are tired of Sway and want to use Wayfire:
 
 ```shell
 ix# ix mut gui -bin/sway bin/wayfire
@@ -142,35 +142,35 @@ Update all installed programs in the gui realm:
 ix# ix mut gui
 ```
 
-By the way, to manipulate your named realm, you can simply omit its name from ix cli:
+By the way, to control your named realm, you can simply exclude its name from the IX CLI:
 
 ```shell
 ix# ix mut bin/telegram/desktop
 ix# ix mut -bin/epiphany +bin/links
 ```
 
-The command can manipulate any number of realms at the same time. The ambiguity is resolved by the fact that realm names cannot contain /, and package names always contain it:
+The command can manipulate any number of realms simultaneously. The ambiguity is eliminated by the fact that realm names cannot contain /, but package names always do:
 
 ```shell
 ix# ix mut gui +bin/dosbox -bin/qemu tui +bin/links
 ```
 
-Flags you specify with `--`, apply to the realm if no package was previously specified within that realm, otherwise to the package:
+Flags you specify with `--` apply to the realm if a package has not previously been specified in that realm, otherwise to the package:
 
 ```shell
 ix# ix mut --mesa_driver=radv +bin/sway --mesa_driver=iris
 ```
 
-With this command, we said that we need to add a flag to the user realm for AMD GPU usage, but we want to use sway with Intel GPU.
+With this command we specified that we need to add a flag in the user realm to use AMD GPU, but we want to use Sway with Intel GPU.
 
 *Important!*<br>
-Within a single command, all changes to one realm happen atomically, but anchor pointers to the realm themselves can happen in any order.
+Within a single command, all changes to a single realm occur atomically, but the anchoring of pointers to the realm itself can occur in any order.
 
 ---
 
 *Exercise*
 
-Explain yourself what the following commands do:
+Explain to yourself what the following commands do:
 
 ```shell
 ix# ix mut A bin/P --X=Y bin/P --X=Z -bin/P
@@ -196,36 +196,36 @@ Version: ImageMagick 7.1.0-58 Q16-HDRI aarch64
     https://imagemagick.org
 ```
 
-The example shows how to run a program built under aarch64 on x86_64 using qemu.
+The example shows how to run a program built for aarch64 on x86_64 using QEMU.
 
 `ix let`
 
-This command does everything the same as `ix mut`, but doesn't switch the anchor link. The command is useful to inspect the contents of the resulting realm before switching.
+This command does the same as `ix mut`, but does not switch the anchor link. The command is useful for checking the contents of the resulting realm before switching.
 
 `ix build`
 
-It's `ix let` over a temporary (ephemeral) realm. The command is useful for reviewing the way some set of packages (can be one) will look like in a freshly created realm, without flags and other environments.
+This is `ix let` over a temporary (ephemeral) realm. The command is useful for seeing how some set of packages (maybe just one) would look in a freshly created realm, without flags and other environments.
 
 `ix gc`
 
-The command finds all unused packages in /ix/store/ and moves them to the /ix/trash/ folder for asynchronous removal. A package is considered unused if there is no path to it from anchor realms in /ix/realm/.
+The command finds all unused packages in /ix/store/ and moves them to the /ix/trash/ folder for asynchronous removal. A package is considered unused if there is no path to it from the anchor realms in /ix/realm/.
 
 `ix list`
 
-View a list of all realms, or installed packages (with flags) in a specific realm.
+View a list of all realms or installed packages (with flags) in a specific realm.
 
-A list of all available packages can be found at [https://github.com/stal-ix/ix/tree/main/pkgs](https://github.com/stal-ix/ix/tree/main/pkgs), or in the pkgs/ folder in your clone of the main repository.
+A list of all available packages can be found at [https://github.com/stal-ix/ix/tree/main/pkgs](https://github.com/stal-ix/ix/tree/main/pkgs) or in the pkgs/ folder in your clone of the main repository.
 
 `ix mut $(ix list)`
 
-This command is used for all realms updating.
+This command is used to update all realms.
 
-There're a number of commands in **IX** that are made as standalone scripts and aren't part of the kernel. For example, because they are not implemented well enough in general, or their semantics aren't well developed enough.<br>
-These commands are available through the `ix tool`:
+There are a number of commands in **IX** that are implemented as separate scripts and are not part of the core. For example, because they are not well implemented as a whole or their semantics are not well developed.<br>
+These commands are available through `ix tool`:
 
 `ix tool list` - show all available commands.
 
-Search for the wanted package by name:
+Search for a wanted package by name:
 
 ```shell
 ix# ix tool listall | grep ssh
