@@ -18,7 +18,8 @@
 [Add a mirror](MIRROR.md)<br>
 [Installation instructions](INSTALL.md)<br>
 [Packaging guide](PKG.md)<br>
-[Documentation style guide](GUIDE.md)
+[Documentation style guide](GUIDE.md)<br>
+[Website license](LICENSE.md)
 
 ----------
 #### stal/IX 2.0: Rust in a [completely static environment](https://t.me/stal_ix/294) 
