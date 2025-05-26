@@ -8,7 +8,7 @@
 
 **stal/IX** is a statically linked Linux distribution, so 3D drivers are also compiled statically.
 
-The driver is selected by specifying --opnegl=..., --vulkan=..., at the time of the application build, or realm.
+The driver is selected by specifying --opengl=..., --vulkan=..., at the time of the application build, or realm.
 
 It can be installed in the realm:
 
@@ -27,17 +27,21 @@ user# ix build bin/gnome/text/editor --opengl=angle --vulkan=amd/vlk
 How to get a list of available drivers:
 
 ```shell
-user# ix tool listall | grep mesa | grep drivers/
+user# ix tool listall | grep mesa/ | grep -v mesa/dl | grep -v /fakes
 lib/mesa/anv
-lib/mesa/iris
-lib/mesa/llvm
+lib/mesa/base
 lib/mesa/nouveau
+lib/mesa/nvk
+lib/mesa/llvm
 lib/mesa/opengl
-lib/mesa/radeonsi
-lib/mesa/radv
-lib/mesa/soft
-lib/mesa/valve
 lib/mesa/vulkan
+lib/mesa/iris
+lib/mesa/soft
+lib/mesa/aco
+lib/mesa/intel
+lib/mesa/radv
+lib/mesa/radeonsi
+lib/mesa/valve
 ```
 
 Rule of thumb - if the name matches the name of the Vulkan driver from Mesa, then Zink will be chosen as the OpenGL driver - [https://docs.mesa3d.org/drivers/zink.html](https://docs.mesa3d.org/drivers/zink.html).
