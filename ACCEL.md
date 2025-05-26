@@ -8,12 +8,12 @@
 
 **stal/IX** is a statically linked Linux distribution, so 3D drivers are also compiled statically.
 
-The driver that the application is built with depends on the mesa_driver variable.
+The driver is selected by specifying --opnegl=..., --vulkan=..., at the time of the application build, or realm.
 
 It can be installed in the realm:
 
 ```shell
-user# ix mut --mesa_driver=radeonsi
+user# ix mut --opengl=mesa/aco --vulkan=mesa/aco
 ```
 
 Then all applications built in this realm using `ix mut`/`ix let` will use the selected driver.
@@ -21,23 +21,23 @@ Then all applications built in this realm using `ix mut`/`ix let` will use the s
 Or for a standalone application:
 
 ```shell
-user# ix build bin/gnome/text/editor --mesa_driver=anv
+user# ix build bin/gnome/text/editor --opengl=angle --vulkan=amd/vlk
 ```
 
 How to get a list of available drivers:
 
 ```shell
 user# ix tool listall | grep mesa | grep drivers/
-lib/mesa/drivers/anv
-lib/mesa/drivers/iris
-lib/mesa/drivers/llvm
-lib/mesa/drivers/nouveau
-lib/mesa/drivers/opengl
-lib/mesa/drivers/radeonsi
-lib/mesa/drivers/radv
-lib/mesa/drivers/soft
-lib/mesa/drivers/valve
-lib/mesa/drivers/vulkan
+lib/mesa/anv
+lib/mesa/iris
+lib/mesa/llvm
+lib/mesa/nouveau
+lib/mesa/opengl
+lib/mesa/radeonsi
+lib/mesa/radv
+lib/mesa/soft
+lib/mesa/valve
+lib/mesa/vulkan
 ```
 
 Rule of thumb - if the name matches the name of the Vulkan driver from Mesa, then Zink will be chosen as the OpenGL driver - [https://docs.mesa3d.org/drivers/zink.html](https://docs.mesa3d.org/drivers/zink.html).
@@ -45,17 +45,33 @@ Rule of thumb - if the name matches the name of the Vulkan driver from Mesa, the
 So, to use the Zink + Vulkan AMD RADV driver, run:
 
 ```shell
-user# ix mut --mesa_driver=radv
+user# ix mut --opengl=mesa/radv --vulkan=mesa/radv
 ```
 
 If zink + vulkan is a good choice for you, it is preferable because the ACO shader compiler is significantly smaller in size than the LLVM variant.
 
+Also one can use:
+
+```shell
+user# ix build bin/gnome/text/editor --opengl=angle ...
+```
+
+For google's ANGLE opengl driver - https://github.com/google/angle
+
+And:
+
+```shell
+user# ix build bin/gnome/text/editor --vulkan=amd/vlk ...
+```
+
+For AMD's https://github.com/google/angle
+
 ## Oddities
-* If you want to use Zink + Vulkan, it is recommended to add to your session script: 
+* If you want to use Zink + Vulkan, it is recommended to add to your session script:
 ```shell
 export WLR_RENDERER=vulkan # for wlroots-based composers
 export MESA_LOADER_DRIVER_OVERRIDE=zink
 ```
-* Intel cards work with mesa_driver=iris, but do not work with mesa_driver=anv.
+* Intel cards work with --opengl=mesa/iris, but do not work with --opengl=mesa/anv.
 
 <!-- {% endraw %} -->
