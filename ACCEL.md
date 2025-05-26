@@ -68,7 +68,7 @@ And:
 user# ix build bin/gnome/text/editor --vulkan=amd/vlk ...
 ```
 
-For AMD's https://github.com/google/angle
+For AMD's https://github.com/GPUOpen-Drivers/AMDVLK
 
 ## Oddities
 * If you want to use Zink + Vulkan, it is recommended to add to your session script:
