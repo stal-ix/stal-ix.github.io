@@ -23,6 +23,7 @@ test -f /usr/bin/parted || yum install parted || apt-get install parted
 # gcc >= 13 can't bootstrap IX right now, so we prefer Clang where possible	
 test -f /usr/bin/g++ || yum install clang lld || yum install g++ || apt-get install g++
 test -f /usr/bin/git || yum install git || apt-get install git
+test -f /usr/bin/make || yum install make || apt-get install make
 ```
 
 For general instructions on partitioning a disk, see<br>
