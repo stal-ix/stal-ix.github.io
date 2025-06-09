@@ -15,7 +15,6 @@
 [Design](STALIX.md)<br>
 [Support](https://t.me/stal_ix)<br>
 [Download](https://github.com/stal-ix/ix)<br>
-[Add a mirror](MIRROR.md)<br>
 [Installation instructions](INSTALL.md)<br>
 [Packaging guide](PKG.md)<br>
 [Documentation style guide](GUIDE.md)<br>
