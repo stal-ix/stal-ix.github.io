@@ -253,3 +253,8 @@ clipboard 0.1.3
 yambar 1.9.0
 libdispatch 5.7.2
 ```
+
+## Advanced features
+
+AddressSanitizer is supported for commands such as `ix build` or `ix run`.
+See [ASAN.md](ASAN.md) for more details
