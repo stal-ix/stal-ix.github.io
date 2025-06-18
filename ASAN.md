@@ -70,6 +70,8 @@ All of these examples were ran with setting `ASAN_SYMBOLIZER_PATH` as described 
 
 `lib/musl` has an unpatched (at the time of writing) buffer overflow in `iconv()` when converting from `EUC-KR` to `UTF-8`. We will create a dummy package with a simple program
 that intentionally triggers the overflow by crafting a malicious input of specified size:
+
+<!-- {% raw %} -->
 ```cpp
 > cat pkgs/bin/CVE-2025-26519/m.cpp
 #include <iconv.h>
@@ -226,6 +228,7 @@ index 3cec77d0e..913284aab 100644
  {{super()}}
  {% endblock %}
 ```
+<!-- {% endraw %} -->
 
 Second, we need to set the `ASAN_OPTIONS` environment variable to `detect_odr_violation=0`.
 
