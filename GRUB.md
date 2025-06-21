@@ -6,6 +6,8 @@ This text assumes that you know what GRUB is, what it is used for, and have a ge
 (2) [https://wiki.archlinux.org/title/EFI_system_partition](https://wiki.archlinux.org/title/EFI_system_partition)<br>
 (3) [https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface)<br>
 
+## UEFI
+
 Become root user:
 ```
 $ sudo sh
@@ -38,9 +40,33 @@ Install the bootloader:
 
 Configure GRUB to automatically detect all kernels installed in the system realm:
 ```
-# cat << EOF > /boot/grub/grub.conf
+# cat << EOF > /boot/grub/grub.cfg
 configfile /etc/grub.cfg
 EOF
 # ix mut system bin/kernel/gengrub
 ```
 
+## Legacy BIOS
+
+Become root user:
+```
+$ sudo sh
+```
+
+Install the GRUB bootloader package:
+```
+# ix mut bin/grub/bios
+```
+
+Install the bootloader itself:
+```
+# grub-install --target=i386-pc /dev/xxx
+```
+
+Configure GRUB to automatically detect all kernels installed in the system realm:
+```
+# cat << EOF > /boot/grub/grub.cfg
+configfile /etc/grub.cfg
+EOF
+# ix mut system bin/kernel/gengrub
+```

@@ -7,8 +7,6 @@
 **_Disclaimer:_**<br>
 *This guide is not for the faint of heart! It assumes that you have some idea of ​​what a statically linked kernel is, and how to build one for your hardware in a source-based distribution.*
 
-*This page was last updated on January 22, 2024 (as of May 19, 2025) and may not be up to date (e.g., pkgs/bin/kernel/kernels.json was removed on [January 27, 2024](https://github.com/stal-ix/ix/commit/e167fc600108b4874887e708a09b229765445206)).*
-
 Also you can use any suitable kernel for your hardware that:
 
 * has MGLRU enabled
@@ -57,36 +55,32 @@ ubuntu# lspci -k
 00:08.2 Class 0604: 1022:1635 pcieport
 ...
 ```
+In some distributions, you may need to run `lspci -k | grep Kernel`.
 
 The last column is a list of modules we need. Write them down.
 
-Next, we need to prepare a directory with the kernel sources for which we are building a config. Let's say we want to use kernel 6.0:
+Next, we need to prepare a directory with the kernel sources for which we are building a config. Let's say we want to use kernel 6.15:
 
 ```shell
 ix# mkdir kernel
 ix# cd kernel
 
 # get current linux kernel source
-ix# cat $(dirname $(which ix))/pkgs/bin/kernel/kernels.json | grep https
-...
-        "url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.1.tar.xz",
-...
-
-ix# wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.1.tar.xz
-ix# tar xf linux-6.7.1.tar.xz
-ix# cd linux-6.7.1
+ix# wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$(grep 6.15 $(dirname $(which ix))/pkgs/bin/kernel/6/15/ver.sh).tar.xz
+ix# tar xf linux-6.15.3.tar.xz
+ix# cd linux-6.15.3
 ```
 
 Let's copy the old kernel configuration into our tree:
 
 ```shell
-ix# cp $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_6_0 ./.config
+ix# cp $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_14 ./.config
 ```
 
 Run the kernel configurator:
 
 ```shell
-ix run set/menuconfig -- make HOSTCC=cc menuconfig
+ix run set/menuconfig -- make HOSTCC=cc CC=cc LD=ld.ldd menuconfig
 ```
 
 You need to find all the modules from the list above in the configurator (there is a search!) and add them to the configuration.
@@ -106,8 +100,8 @@ Alternatively, you can combine the previous commands into one:
 
 ```shell
 ...
-ix# cd linux-6.7.1
-ix# ix tool reconf $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_6_0
+ix# cd linux-6.15.3
+ix# ix tool reconf $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_14
 ```
 
 Most often, to understand what needs to be included in the kernel configuration for a particular device operation, it is useful to search the web for the module name and the Gentoo/Arch link, as they have the largest knowledge base on the topic:
@@ -117,15 +111,15 @@ Most often, to understand what needs to be included in the kernel configuration 
 After configuring the kernel, copy the modified configuration to the base:
 
 ```shell
-ix# cp .config $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_6_0
+ix# cp .config $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_14
 ```
 
 After that, you can add the kernel to the system realm in the usual way:
 
 ```shell
-ix# ix mut system bin/kernel/6/7
+ix# ix mut system bin/kernel/6/15
 ix# ls /bin/kernel-*
-/bin/kernel-6-7-1...
+/bin/kernel-6-15
 ```
 
 Remember that path, you will need it later in GRUB CLI or in grub.cfg.
@@ -133,9 +127,24 @@ Remember that path, you will need it later in GRUB CLI or in grub.cfg.
 Alternatively, you can use a separate realm for the bootstrap kernel:
 
 ```shell
-ix# ix mut kernel bin/kernel/6/7
+ix# ix mut kernel bin/kernel/6/15
 ix# ls /ix/realm/kernel/bin/kernel-*
-/ix/realm/kernel/bin/kernel-6-7-1-slot0
+/ix/realm/kernel/bin/kernel-6-15
 ```
 
 Remember that path, you will need it later in GRUB CLI or in grub.cfg.
+
+## [Legacy BIOS oddities](https://github.com/stal-ix/ix/issues/754)
+
+In legacy BIOS, the kernel needs to have the byte sequence `aa55` at offset 510 in order for it to be bootable by GRUB. You can verify this using `hexdump -s 510 /bin/kernel-* | head -n 1`; if the output doesn't start with `00001fe aa55`, then it is not bootable and you will get `error: invalid magic number.` in GRUB. In that case, rebuild the kernel with CONFIG_EFI_STUB=n.
+
+## Configuration options for hypervisors
+
+### VMware
+* CONFIG_FUSION=y
+* CONFIG_FUSION_SPI=y
+* CONFIG_HYPERVISOR_GUEST=y
+* CONFIG_DRM_VMWGFX=y
+* CONFIG_VMWARE_VMCI=y
+
+<!-- Other hypervisors go here -->
