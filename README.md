@@ -14,7 +14,8 @@
 [Blog](https://medium.com/@anton_samokhvalov)<br>
 [Design](STALIX.md)<br>
 [Support](https://t.me/stal_ix)<br>
-[Download](https://github.com/stal-ix/ix)<br>
+[Download](https://github.com/stal-ix/stalix/releases/latest)<br>
+[Source code repo](https://github.com/stal-ix/ix)<br>
 [Installation instructions](INSTALL.md)<br>
 [Packaging guide](PKG.md)<br>
 [Documentation style guide](GUIDE.md)<br>
