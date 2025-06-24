@@ -80,7 +80,7 @@ ix# cp $(dirname $(which ix))/pkgs/bin/kernel/configs/cfg_6_14 ./.config
 Run the kernel configurator:
 
 ```shell
-ix run set/menuconfig -- make HOSTCC=cc CC=cc LD=ld.ldd menuconfig
+ix run set/menuconfig -- make HOSTCC=cc CC=cc LD=ld.lld menuconfig
 ```
 
 You need to find all the modules from the list above in the configurator (there is a search!) and add them to the configuration.
