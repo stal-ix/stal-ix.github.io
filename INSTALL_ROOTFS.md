@@ -33,19 +33,13 @@ mkdir /mnt/ix
 mount /dev/xxx /mnt/ix
 ```
 
-Download the latest stal/IX rootfs tarball from [here](https://github.com/stal-ix/stalix/releases/latest) (e.g. https://github.com/stal-ix/stalix/releases/download/20250620/stalix-x86_64-20250620.tar.xz) and extract it:
+Download the latest stal/IX rootfs tarball from [here](https://github.com/stal-ix/stalix/releases/latest) (e.g. https://github.com/stal-ix/stalix/releases/download/20250627/stalix-x86_64-20250627.tar.xz) and extract it:
 
 ```shell
 cd /mnt/ix
 
-wget https://github.com/stal-ix/stalix/releases/download/20250620/stalix-x86_64-20250620.tar.xz
+wget https://github.com/stal-ix/stalix/releases/download/20250627/stalix-x86_64-20250627.tar.xz
 tar -xpJf stalix-*-*.tar.xz
-```
-
-Create a "tmp" directory in the root filesystem (required for configuring a Linux kernel):
-
-```shell
-mkdir tmp
 ```
 
 And `pivot_root` inside of the root filesystem (`chroot` doesn't work with `unshare` used by **IX**):
