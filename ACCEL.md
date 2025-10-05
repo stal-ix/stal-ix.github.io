@@ -24,7 +24,7 @@ Or for a standalone application:
 user# ix build bin/gnome/text/editor --opengl=angle --vulkan=amd/vlk
 ```
 
-How to get a list of available drivers:
+How to get a list of available mesa drivers:
 
 ```shell
 user# ix tool listall | grep mesa/ | grep -v mesa/dl | grep -v /fakes
@@ -69,6 +69,20 @@ user# ix build bin/gnome/text/editor --vulkan=amd/vlk ...
 ```
 
 For AMD's https://github.com/GPUOpen-Drivers/AMDVLK
+
+For regular applications we suggest use generic opengl driver, like ANGLE, and appropriate Vulkan driver:
+
+```shell
+user# ix build ... --opengl=angle --vulkan=amd/vlk # will use AMDVLK as Vulkan driver
+user# ix build ... --opengl=angle --vulkan=amd/radv # will use Mesa RADV as Vulkan driver
+user# ix build ... --opengl=angle --vulkan=intel/anv # will use Mesa ANV as Vulkan driver
+```
+
+For compositors, which rely on Mesa GBM for buffer allocation, we recommend using full Mesa stack:
+
+```shell
+user# ix build bin/niri --opengl=mesa/aco --vulkan=mesa/aco
+```
 
 ## Oddities
 * If you want to use Zink + Vulkan, it is recommended to add to your session script:
