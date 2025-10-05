@@ -84,6 +84,6 @@ user# ix build bin/niri --opengl=mesa/aco --vulkan=mesa/aco
 export WLR_RENDERER=vulkan # for wlroots-based composers
 export MESA_LOADER_DRIVER_OVERRIDE=zink
 ```
-* Intel cards work with --opengl=mesa/iris, but do not work with --opengl=mesa/anv.
+* Intel cards work with --opengl=mesa/iris, but do not work with --opengl=mesa/anv. Also you can try --opengl=angle --vulkan=intel/anv.
 
 <!-- {% endraw %} -->
