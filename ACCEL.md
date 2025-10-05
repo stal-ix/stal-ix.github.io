@@ -82,8 +82,10 @@ Software rasterization:
 
 ```shell
 user# ix build bin/quake/2/yamagi --opengl=angle --vulkan=swift/shader
-user# ix build bin/quake/2/yamagi --opengl=mesa/swrast --vulkan=mesa/swrast
+user# ix build bin/quake/2/yamagi --opengl=mesa/soft --vulkan=mesa/soft
 ```
+
+Also one can try to build packages with only one of --opengl/--vulkan provided, for opengl/vulkan-only expirience.
 
 ## Oddities
 * If you want to use Zink + Vulkan, it is recommended to add to your session script:
