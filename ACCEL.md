@@ -78,10 +78,11 @@ For compositors, which rely on Mesa GBM for buffer allocation, we recommend usin
 user# ix build bin/niri --opengl=mesa/aco --vulkan=mesa/aco
 ```
 
-For full software rendering:
+Software rasterization:
 
 ```shell
 user# ix build bin/quake/2/yamagi --opengl=angle --vulkan=swift/shader
+user# ix build bin/quake/2/yamagi --opengl=mesa/swrast --vulkan=mesa/swrast
 ```
 
 ## Oddities
