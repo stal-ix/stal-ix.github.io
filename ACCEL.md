@@ -29,19 +29,13 @@ How to get a list of available mesa drivers:
 ```shell
 user# ix tool listall | grep mesa/ | grep -v mesa/dl | grep -v /fakes
 lib/mesa/anv
-lib/mesa/base
 lib/mesa/nouveau
 lib/mesa/nvk
-lib/mesa/llvm
-lib/mesa/opengl
-lib/mesa/vulkan
 lib/mesa/iris
 lib/mesa/soft
 lib/mesa/aco
-lib/mesa/intel
 lib/mesa/radv
 lib/mesa/radeonsi
-lib/mesa/valve
 ```
 
 Rule of thumb - if the name matches the name of the Vulkan driver from Mesa, then Zink will be chosen as the OpenGL driver - [https://docs.mesa3d.org/drivers/zink.html](https://docs.mesa3d.org/drivers/zink.html).
