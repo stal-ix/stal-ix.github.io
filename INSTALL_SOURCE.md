@@ -110,7 +110,6 @@ Now [prepare a bootable kernel for your hardware](KERNEL.md) and [install the GR
 
 ```shell
 . /etc/profile
-. /etc/env
 ```
 
 We now have some useful utilities in the PATH from /ix/realm/root.
