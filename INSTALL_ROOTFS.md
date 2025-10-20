@@ -52,14 +52,13 @@ mount -t sysfs sysfs /sys
 mount --rbind old-root/dev /dev
 mount -t tmpfs -o mode=1777 tmpfs /dev/shm
 cp old-root/etc/resolv.conf /var/run/resolvconf/
-. /etc/env
+. /etc/profile
 ```
 
 Now [prepare a bootable kernel for your hardware](KERNEL.md) and [install the GRUB bootloader](GRUB.md). Reboot into GRUB and select the menu entry corresponding to your kernel. After a successful boot, switch to tty5, the root prompt will appear.
 
 ```shell
 . /etc/profile
-. /etc/env
 ```
 
 [Add a completely new user without sudo capability](https://stal-ix.github.io/ETC#add-user).<br>
