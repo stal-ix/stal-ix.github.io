@@ -15,7 +15,7 @@ Note: AddressSanitizer integration in **IX** only works for `lib/musl`. Alternat
 2. (optional, but highly recommended) Set the `ASAN_SYMBOLIZER_PATH` environment variable to the path to the `llvm-symbolizer` binary that is built along with `clang` as part of **IX** bootstrapping: `export ASAN_SYMBOLIZER_PATH=$(find /ix/store -name llvm-symbolizer | head -n1)`.
 
 For example, let's reproduce [this issue](https://github.com/gavinhoward/bc/commit/8303d0bcc6a78d0e55bf365366761040ed0a17b8)
-in `bin/bc/gavin`. At the time of writing, this issue hasn't yet been patched in the latest publically available release.
+in `bin/bc/gavin`. At the time of writing, this issue hasn't yet been patched in the latest publicly available release.
 
 Without AddressSanitizer, the sequence of commands described in the issue leads to an unhelpful segfault:
 ```
@@ -415,7 +415,7 @@ because the binary is linked with the AddressSanitizer runtime, which contains r
 ### Circular dependencies at runtime
 
 Instrumenting everything in `lib/musl` also introduces a circular dependency at runtime:
-  * the instrumented TLS initialization code in `lib/musl` needs shadow memory to function propertly
+  * the instrumented TLS initialization code in `lib/musl` needs shadow memory to function properly
   * however, the sanitizer runtime initialization code that sets the shadow memory up implicitly assumes that TLS has already been initialized
 
 We solve this by instructing the compiler to avoid instrumenting all `lib/musl` initialization code that is run before `main()`.
